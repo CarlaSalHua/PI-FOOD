@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+//llamados&requerimientos:
 const modelRecipe = require('./models/Recipe');
 const modelType = require('./models/Type');
 const {
@@ -31,11 +32,11 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
-const { Recipe } = sequelize.models;
-
 modelRecipe(sequelize);
 modelType(sequelize);
+// Para relacionarlos hacemos un destructuring
+const { Recipe, Type } = sequelize.models;
+
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
