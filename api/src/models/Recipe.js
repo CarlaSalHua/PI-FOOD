@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
     id:{
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -14,20 +15,28 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image:{
+      type: DataTypes.STRING,
+      //defaultValue:'https://blog.contraelcancer.es/wp-content/uploads/2020/03/iStock-1017706758-mod.jpg',
+    },
     summary: {
       type: DataTypes.STRING,
       allowNull: false,
-      default: 'No se ingreso resumen a la receta',
+      defaultValue: 'No se ingreso resumen a la receta',
     },
     healthScore: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      default: 'No se indico el puntaje de salubridad',
     },
     steps: {
       type: DataTypes.STRING,
+      defaultValue: 'No se ingresaron los pasos a la receta',
       allowNull: true,
-      default: 'No se ingresaron los pasos a la receta',
-    }
+    },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
   });
 };
