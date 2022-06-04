@@ -35,8 +35,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 modelRecipe(sequelize);
 modelType(sequelize);
 // Para relacionarlos hacemos un destructuring
-const { Recipe, Type } = sequelize.models;
 
+const { Recipe, Type } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 //RELATION: Many_to_many:
