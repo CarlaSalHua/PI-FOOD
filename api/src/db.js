@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const modelRecipe = require('./models/Recipe');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -32,6 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Recipe } = sequelize.models;
 
+modelRecipe(sequelize);
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
