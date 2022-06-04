@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const modelRecipe = require('./models/Recipe');
+const modelType = require('./models/Type');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -34,6 +35,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Recipe } = sequelize.models;
 
 modelRecipe(sequelize);
+modelType(sequelize);
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 

@@ -16,14 +16,17 @@ module.exports = (sequelize) => {
     summary: {
       type: DataTypes.STRING,
       allowNull: false,
+      default: 'No se ingreso resumen a la receta',
     },
     healthScore: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      default: 'No se indico el puntaje de salubridad',
     },
     steps: {
       type: DataTypes.STRING,
       allowNull: true,
+      default: 'No se ingresaron los pasos a la receta',
     }
   });
 };
