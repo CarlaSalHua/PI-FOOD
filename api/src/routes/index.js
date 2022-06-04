@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const Recipe = require('../models/Recipe');
+require('dotenv').config();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
+const {YOUR_API_KEY} = process.env;
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
