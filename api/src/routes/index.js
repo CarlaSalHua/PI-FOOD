@@ -8,7 +8,7 @@ const router = Router();
 const {getById,getAllRecipes} = require('../controllers/index');
 const {getTypeDiet} = require('../controllers/TypeDiet');
 //const Type = require('../models/Type');
-const {Type}= require ('../db')
+const {Type, Recipe}= require ('../db')
 //*****************************************************//
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -67,26 +67,26 @@ router.get('/recipes/:idReceta', async(req, res)=>{
 });
 
 //*3*[ ] POST /recipes:
-// router.post('/recipe', async(req, res)=>{
-//     const {name, summary, img, diets, healthyScore, spoonacularScore, dishes, steps}= req.body;
+router.post('/recipe', async(req, res)=>{
+    const {name, image, summary,  healthScore, steps, diets}= req.body;
 
-//     const newRecipe= await Recipe.create({
-//         name,
-//         summary,
-//         img,
-//         diets,
-//         healthyScore,
-//         spoonacularScore,
-//         dishes,
-//         steps, 
-//     });
+    const newRecipe= await Recipe.create({
+        name,
+        image,
+        summary,
+        healthScore,
+        steps,
+    });
 
-//     const typeDiet= await Type.findAll({
-//         where:
-//         {nameType: diets}
-//     })
-//     await newRecipe.addDiet(typeDiet);
-// });
+    for (let i=0; i<diets.length;i++){
+        let promiseDiet= await Type.findOne({
+         where: {nameType: diets[i].replaceAll(' ','-')}
+        })
+        await newRecipe.addType(promiseDiet);
+    }
+
+    res.status(200).send('Receta creada')
+});
 
 router.get('/typediets/:dieta', async(req, res)=>{
     const {dieta}= req.params;

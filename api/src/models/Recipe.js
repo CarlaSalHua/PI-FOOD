@@ -5,11 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
     id:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
+      //autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -32,12 +32,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: 'No se ingresaron los pasos a la receta',
       allowNull: true,
-    },
-    createdInDb: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-    },
+    }
+    // createdInDb: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true,
+    // },
   },
   {timeStamps: false,
     createdAt: false, // don't add createdAt attribute
