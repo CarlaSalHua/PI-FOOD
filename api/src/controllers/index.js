@@ -29,19 +29,39 @@ const getApi = async () => {
   }
 };
 
-//* DB INFO
+//* DATA BASE INFO
 const getDataBase = async () => {
-  const db = await Recipe.findAll({
-    include: {
-      model: Type,
-      attributes: ["nameType"],
-      through: {
-        attributes: [],
+  try{
+    const db = await Recipe.findAll({
+      include: {
+        model: Type,
+        attributes: ["nameType"],
+        through: {
+          attributes: [],
+        },
       },
-    },
-  });
-  return db;
+    });
+    return db;
+  }
+  catch(error){
+    console.log(error)
+  }
 };
+
+//** DATA BASE BY DIETA:
+const getDBdiet= async (dietdb)=>{
+  let dbDiet= await getDataBase()
+  dbDiet= dbDiet.filter(e=>{
+    for(let i=0; i<e.types.length; i++){
+      if(e.types[i]['nameType'].includes(dietdb)){
+        return true
+      }
+    }
+    return false;
+  })
+  return dbDiet;
+};
+
 
 //*ALL RECIPES BY ID
 const getById = async (id)=> {
@@ -77,13 +97,18 @@ const getById = async (id)=> {
 
 //* ALL RECIPES
 const getAllRecipes = async () => {
-  const apiInfo = await getApi();
-  //console.log(apiInfo);
-  const dbInfo = await getDataBase();
-  //concatenando:
-  const totalInfo = apiInfo.concat(dbInfo);
-  return totalInfo;
-  //return apiInfo
+  try{
+    const apiInfo = await getApi();
+    //console.log(apiInfo);
+    const dbInfo = await getDataBase();
+    //concatenando:
+    const totalInfo = apiInfo.concat(dbInfo);
+    return totalInfo;
+    //return apiInfo
+  }
+  catch(error){
+    console.log(error)
+  }
 };
 //(*conPROMESAS):
 // const getAllRecipes= async() => {
@@ -94,6 +119,7 @@ const getAllRecipes = async () => {
 module.exports = {
   getApi,
   getDataBase,
+  getDBdiet,
   getById,
   getAllRecipes,
 };
