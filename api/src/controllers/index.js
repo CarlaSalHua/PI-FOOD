@@ -1,6 +1,5 @@
 require ('dotenv').config();
 const { YOUR_API_KEY } = process.env;
-
 const { Recipe, Type } = require("../db");
 const axios = require("axios");
 
@@ -26,7 +25,7 @@ const getApi = async () => {
     }));
     return apikRecipes;
   } catch (error) {
-    console.log("soy yos");
+    console.log(error);
   }
 };
 
@@ -44,14 +43,47 @@ const getDataBase = async () => {
   return db;
 };
 
+//*ALL RECIPES BY ID
+const getById = async (id)=> {
+  // const allTypeId=id.match(/[a-z]/g)
+  // if(allTypeId?.length){
+  //   return false;
+  // }
+  try{
+    const allId=await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${YOUR_API_KEY}`
+    );
+    const idRecipes={
+      id: allId.data.id,
+      name: allId.data.title,
+      summary: allId.data.summary,
+      img: allId.data.image,
+      diets: allId.data.diets,
+      spoonacularScore: allId.data.spoonacularScore,
+      healthyScore: allId.data.healthScore,
+      dishes: allId.data.dishTypes,
+      steps: allId.data.analyzedInstructions[0]?.steps.map((st) => ({
+        num: st.number,
+        step: st.step,
+      })),
+    };
+    return idRecipes;
+  }
+  catch(error){
+    console.log (error)
+  }
+}; 
+
+
 //* ALL RECIPES
 const getAllRecipes = async () => {
   const apiInfo = await getApi();
+  //console.log(apiInfo);
   const dbInfo = await getDataBase();
   //concatenando:
   const totalInfo = apiInfo.concat(dbInfo);
   return totalInfo;
-
+  //return apiInfo
 };
 //(*conPROMESAS):
 // const getAllRecipes= async() => {
@@ -62,5 +94,6 @@ const getAllRecipes = async () => {
 module.exports = {
   getApi,
   getDataBase,
+  getById,
   getAllRecipes,
 };

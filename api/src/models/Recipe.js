@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     },
     image:{
       type: DataTypes.STRING,
-      //defaultValue:'https://blog.contraelcancer.es/wp-content/uploads/2020/03/iStock-1017706758-mod.jpg',
+      defaultValue:'https://blog.contraelcancer.es/wp-content/uploads/2020/03/iStock-1017706758-mod.jpg',
     },
     summary: {
       type: DataTypes.STRING,
@@ -38,5 +38,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     },
-  });
+  },
+  {timeStamps: false,
+    createdAt: false, // don't add createdAt attribute
+    updatedAt: false}
+  );
 };

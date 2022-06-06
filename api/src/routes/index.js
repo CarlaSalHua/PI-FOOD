@@ -1,12 +1,14 @@
+require ('dotenv').config();
 const { Router } = require('express');
-
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
 //import de controllers
-const {getAllRecipes } = require('../controllers');
-
+const {getById,getAllRecipes} = require('../controllers/index');
+const {getTypeDiet} = require('../controllers/TypeDiet');
+//const Type = require('../models/Type');
+const {Type}= require ('../db')
 //*****************************************************//
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -15,7 +17,7 @@ const {getAllRecipes } = require('../controllers');
 router.get('/recipes', async(req, res)=>{
     const {name}=req.query;
     const totalRecipes= await getAllRecipes();
-    console.log(totalRecipes)
+    // console.log(totalRecipes)
     if(name){
         let nameRecipe= totalRecipes.filter(re=>re.name.toLowerCase().includes(name.toLowerCase()));
         nameRecipe.length?
@@ -27,9 +29,8 @@ router.get('/recipes', async(req, res)=>{
     }
 
     // if (!name) return res.json('No ingresaste el nombre de la receta.');
-    
-    // const {data}=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
-    // );
+    // const {data}=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=10`
+    // );0
     // const apikRecipes= data.results.map(re=>({
     //     id:re.id,
     //     name:re.title,
@@ -47,25 +48,80 @@ router.get('/recipes', async(req, res)=>{
 //  const findRecipe = await Recipe.findAll()
 //  const conCat = apiK.concat(findRecipe);
 //  let search = conCat.filter(e=>e.name.includes(name))
-//  res.json(search.length?search:'No se encontro la receta.')
+    //  res.json(search.length?search:'No se encontro la receta.')
 });
 
-//get All/recipes
-// router.get ('/recipes', async (req, res)=>{
-//  const findAll= await Recipe.findAll()
-//     return res.json(findAll) 
-// });
 
 // //*2*[ ] GET /recipes/{idReceta}:
-// router.get('/recipes/:idReceta', async(req, res)=>{
-//  const {idReceta}= req.params;
-//  if(!idReceta) return res.json('No ingresaste ningun id');
-//  const {data} = await axios.get(`https://api.spoonacular.com/recipes/${idReceta}/information?apiKey=${YOUR_API_KEY}`);
-//  res.json(data);
-// });
+router.get('/recipes/:idReceta', async(req, res)=>{
+ const {idReceta}= req.params;
+ const idTotalRecipes= await getById(idReceta);
+ if(idReceta){
+    idReceta?
+    res.status(200).send(idTotalRecipes):
+    res.status(404).send('No ingreso un id valido.')
+ }
+ else {
+     res.status(404).send('No ingresaste ningun id');
+ }
+});
 
 //*3*[ ] POST /recipes:
+// router.post('/recipe', async(req, res)=>{
+//     const {name, summary, img, diets, healthyScore, spoonacularScore, dishes, steps}= req.body;
+
+//     const newRecipe= await Recipe.create({
+//         name,
+//         summary,
+//         img,
+//         diets,
+//         healthyScore,
+//         spoonacularScore,
+//         dishes,
+//         steps, 
+//     });
+
+//     const typeDiet= await Type.findAll({
+//         where:
+//         {nameType: diets}
+//     })
+//     await newRecipe.addDiet(typeDiet);
+// });
+
+router.get('/typediets/:dieta', async(req, res)=>{
+    const {dieta}= req.params;
+    const dietsApi= await getTypeDiet(dieta);
+
+    if(dieta){
+        dietsApi.length?
+        res.status(200).send(dietsApi):
+        res.status(404).send('Dieta no encontrada')
+    }
+    else{
+        res.status(404).send('No ingreso ninguna dieta.')
+    }
+    //console.log(dietsApi);
+});
+
+
 //*4*[ ] GET /diets:
+router.get('/diets/:nameType', async(req, res)=>{
+    const {nameType}=req.params;
+    const typeDiet= await Type.findAll();
+    // //console.log(typeDiet)
+    //const diets= await getTypeDiet()
+    if(nameType){
+        const dietName= typeDiet.filter(e=>e.nameType.toLowerCase().includes(nameType.toLocaleLowerCase()));
+        dietName.length?
+        res.status(200).send(dietName):
+        res.status(404).send('Dieta no encontrada')
+    }
+    else{
+        res.status(200).send(typeDiet);
+    }
+    
+});
+
 
 
 module.exports = router;
