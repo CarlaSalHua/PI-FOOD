@@ -95,7 +95,7 @@ const getById = async (id)=> {
 }; 
 
 
-//* ALL RECIPES
+//* ALL RECIPES (FROM DB & API):
 const getAllRecipes = async () => {
   try{
     const apiInfo = await getApi();

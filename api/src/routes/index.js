@@ -34,7 +34,7 @@ router.get('/recipes', async(req, res)=>{
 });
 
 
-// //*2*[ ] GET /recipes/{idReceta}:
+//*2*[ ] GET /recipes/{idReceta}:
 router.get('/recipes/:idReceta', async(req, res)=>{
  const {idReceta}= req.params;
  const idTotalRecipes= await getById(idReceta);
