@@ -1,10 +1,14 @@
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
+      <BrowserRouter>
+        <div className="App">
+          <h1>Healthy Food Web</h1>
+          <h4>Find your best healthy recipe!</h4>
+        </div>
+      </BrowserRouter>
   );
 }
 
