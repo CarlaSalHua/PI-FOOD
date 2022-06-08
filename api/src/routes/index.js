@@ -12,6 +12,7 @@ const {Type, Recipe}= require ('../db')
 // Ejemplo: router.use('/auth', authRouter);
 
 //*1*[ ] GET /recipes?name="...":
+//* getting ALL recipes(API+DB) by NAME *
 router.get('/recipes', async(req, res)=>{
     const {name}=req.query;
     const totalRecipes= await getAllRecipes();
@@ -35,6 +36,8 @@ router.get('/recipes', async(req, res)=>{
 
 
 //*2*[ ] GET /recipes/{idReceta}:
+//* getting all recipes(API) by ID * 
+// NOTA: ADICIONAR LOS DE LA BASE DE DATOS
 router.get('/recipes/:idReceta', async(req, res)=>{
  const {idReceta}= req.params;
  const idTotalRecipes= await getById(idReceta);
@@ -54,7 +57,7 @@ router.get('/recipes/:idReceta', async(req, res)=>{
 });
 
 //*3*[ ] POST /recipes:
-router.post('/recipe', async(req, res)=>{
+router.post('/recipes', async(req, res)=>{
     const {name, image, summary,  healthScore, steps, diets}= req.body;
 
     const newRecipe= await Recipe.create({
@@ -79,7 +82,7 @@ router.post('/recipe', async(req, res)=>{
     }
 });
 
-//*4*[ ] GET /diets:  
+//*4*[ ] GET /typediets/{nameTypeDiet}  
 //**por TIPO DE DIETA DESDE API:
 router.get('/typediets/:dieta', async(req, res)=>{
     const {dieta}= req.params; // probar con query
@@ -100,7 +103,7 @@ try{
  }
 });
 
-//**por TIPO DE DIETA DESDE LA BASE DE DATOS:
+//**ALL & TYPE by TYPE-DIET from DB:
 router.get('/diets', async(req, res)=>{
     const {nameType}=req.query;
     console.log('hola')
@@ -123,7 +126,7 @@ catch(error){
   }  
 });
 
-//*DELETE:
+//*DELETE /delete/:id
 router.delete('/delete/:id', async(req, res)=>{
     const {id}= req.params;
     try{
