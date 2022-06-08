@@ -1,5 +1,8 @@
 
 
-const getAllRecipes =()=> async (dispatch)=>{};
+const getAllRecipes = async (dispatch)=>{};
+
+
 
 export default getAllRecipes;
+    

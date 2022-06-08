@@ -1,5 +1,6 @@
+import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 function App() {
   return (
@@ -7,6 +8,11 @@ function App() {
         <div className="App">
           <h1>Healthy Food Web</h1>
           <h4>Find your best healthy recipe!</h4>
+          <Route></Route>
+          <Route></Route>
+          <Route></Route>
+          <Route></Route>
+          <Route></Route>
         </div>
       </BrowserRouter>
   );
