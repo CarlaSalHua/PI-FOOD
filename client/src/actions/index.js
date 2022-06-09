@@ -92,6 +92,8 @@ const deleteRecipe = (id)=> {
         payload: id,
    }
 };
+//esconder el delete para la presentacion xd
+
 
 
 export {
