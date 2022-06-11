@@ -1,0 +1,10 @@
+.cardConteiner{
+    width: 30%;
+    max-width: 120rem;
+    margin: 1px auto;
+    background: rgba(65, 210, 101, 0.863);
+    padding: 18px 18px;
+    box-shadow: 3px -1px 50px -11px rgba(1, 169, 12, 0.9);
+    -webkit-box-shadow: 3px -1px 50px -11px rgba(3, 138, 30, 0.745);
+    -moz-box-shadow: 3px -1px 50px -11px rgb(0, 0, 0);
+}

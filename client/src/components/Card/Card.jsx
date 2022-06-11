@@ -1,19 +1,17 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import '../styles/CardStyle.css'
+import s from '../Card/Card.module.css'
 
-const Card = ({id, name, image, summary, diets, healthyscore, steps})=> {
+const Card =({id, name, image, summary, diets, healthyScore})=> {
     return(
-        <div className='card'>
+        <div className={s.cardConteiner}>
             <Link to={`/recipe/${id}`}>
-                <h3 className='name'>{name}</h3>
+                <h3 className={s.name}>{name}</h3>
+            <img className={s.image} src={image} alt='img'/>
             </Link>
-            <img className='img' src={image} alt='img'/>
-            <h5>Summary: {summary}</h5>
-            <h4>Diets: {diets}</h4>
-            <h4>Score: {healthyscore}</h4>
-            <button></button>
-            <h5>{steps}</h5>
+            <p>Score: {healthyScore}</p>
+            <p>Diets: {diets}</p>
+            <p>Summary: {summary}</p>
         </div>
     )
 
