@@ -9,12 +9,17 @@ import axios from 'axios';
 //* getting all recipes (API + DB)*//
 const getAllRecipes= ()=>{
     return async function (dispatch) {
-    var json = await axios.get(`http://localhost:3001/recipes`);
-     return dispatch ({
-        type:'GET_ALL_RECIPES',
-        payload: json.data
-
-     });
+      try{
+        var json = await axios.get(`http://localhost:3001/recipes`);
+         return dispatch ({
+            type:'GET_ALL_RECIPES',
+            payload: json.data
+    
+         });
+      }
+      catch(error){
+        throw error;
+      }
    };
 };
 
@@ -94,11 +99,46 @@ const recipesByName = (name)=>{
 //    }
 // };
 // //esconder el delete para la presentacion xd
+//
+//*ASCENDANT FILTER (A-Z) \ DEFAULT:(Z-A)*
+const filterA_Z= (payload)=> {
+    return {
+      type: 'FILTER_A_Z',
+      payload,
+    };
+};
 
+//*Diet Types filter* (NO FUNCIONO TT___TT)...REVISAR
+const filter_diet_types= (payload)=> {
+    return{
+      type: 'FILTER_DIET_TIPES',
+      payload,
+    };
+};
 
+//*HEALTH SCORE FILTER (MIN-MAX) \ DEFAULT:(MAX-MIN)*
+const filter_health_score= (payload)=> {
+    return{
+      type: 'FILTER_HEALTH_SCORE',
+      payload,
+    };
+};
 
-export {getAllRecipes,
+//*CREATED FILTER (IN DATA BASE) \ DEFAULT:(IN API)*
+const filter_created= (payload)=>{
+    return{
+      type: 'FILTER_BY_CREATED',
+      payload,
+    };
+};
+
+export {
+   getAllRecipes,
    recipesByName,
+   filterA_Z,
+   filter_diet_types,
+   filter_health_score,
+   filter_created,
 }
     // recipesById,
     // cleanData,

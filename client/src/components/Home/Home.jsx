@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../../redux/actions';
 import Card from '../Card/Card';
 import Search from '../SearchBar/SearchBar';
+import FilterAlphabetical from '../Filters/FilterAlphabetical';
+import FilterDietTypes from '../Filters/FilterDietTypes';
+import FilterHealthScore from '../Filters/FilterHealthScore';
+import FilterByCreated from '../Filters/FilterByCreated';
 import s from '../Home/Home.module.css'
 //import rootReducer from '../../reducer';
 
@@ -35,42 +39,20 @@ const Home=()=> {
             <div>
                 <div>
                     <h3>Recipes</h3>
-                    <select>
-                        <option value= 'All'>All recipes</option>
-                        <option value= 'Api'>Existing recipes</option>
-                        <option value= 'Created'>Created recipes</option>
-                    </select>
+                        <FilterByCreated/>
                 </div>
                 <div>
                     <h3>Alphabetical order</h3>
-                    <select>
-                        <option value= 'All'>All recipes</option>
-                        <option value= 'asc'>Ascendant (A-Z)</option>
-                        <option value= 'desc'>Descendant (Z-A)</option>
-                    </select>
+                        <FilterAlphabetical/>
                 </div>
                 <div>
                     <h3>Health Score</h3>
-                    <select>
-                        <option value= 'All'>All recipes</option>
-                        <option value= 'higher'>Higher Score</option>
-                        <option value= 'lower'>Lower Score</option>
-                    </select>
+                        <FilterHealthScore/>
+                    
                 </div>
                 <div>
                     <h3>Diet types</h3>
-                    <select>
-                        <option value= 'All'>All type diets</option>
-                        <option value='glutenfree'>gluten-free</option>
-                        <option value='ketogenic'>ketogenic</option>
-                        <option value='vegetarian'>vegetarian</option>
-                        <option value='lactovegetarian'>lacto-vegetarian</option>
-                        <option value='ovovegetarian'>ovo-vegetarian</option>
-                        <option value='vegan'>vegan</option>
-                        <option value='paleo'>paleo</option>
-                        <option value='lowfodmap'>low-fodmap</option>
-                        <option value='whole30'>whole30</option>
-                    </select>
+                        <FilterDietTypes/>
                 </div>
 
             </div>
