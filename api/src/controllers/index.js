@@ -9,12 +9,14 @@ const getApi = async () => {
   //llamado a la api por axios:
   try {
     const all = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
-    );
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=10`
+    ); //NO OLVIDAR CAMBIAR A 100
     const apikRecipes = all.data.results.map((re) => ({
       id: re.id,
       name: re.title,
-      summary: re.summary,
+      image: re.image,
+      summary: re.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
+      diets: re.diets,
       spoonacularScore: re.spoonacularScore,
       healthyScore: re.healthScore,
       dishes: re.dishTypes,
@@ -76,8 +78,8 @@ const getById = async (id)=> {
     const idRecipes={
       id: allId.data.id,
       name: allId.data.title,
-      summary: allId.data.summary,
       img: allId.data.image,
+      summary: allId.data.summary,
       diets: allId.data.diets,
       spoonacularScore: allId.data.spoonacularScore,
       healthyScore: allId.data.healthScore,

@@ -32,12 +32,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: 'No se ingresaron los pasos a la receta',
       allowNull: true,
-    }
-    // createdInDb: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: true,
-    // },
+    },
+    // diets: {
+    //   type: DataTypes.STRING
+    // }
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {timeStamps: false,
     createdAt: false, // don't add createdAt attribute

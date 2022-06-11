@@ -19,7 +19,7 @@ router.get('/recipes', async(req, res)=>{
     // console.log(totalRecipes)
     try{
         if(name){
-            let nameRecipe= totalRecipes.filter(re=>re.name.toLowerCase().includes(name.toLowerCase()));
+            let nameRecipe= totalRecipes.filter((re)=>re.name.toLowerCase().includes(name.toLowerCase()));
             nameRecipe.length?
             res.status(200).send(nameRecipe):
             res.status(404).send('No ingresaste el nombre correcto de la receta.');
@@ -66,6 +66,7 @@ router.post('/recipes', async(req, res)=>{
         summary,
         healthScore,
         steps,
+        diets,
     });
     try{
         //Elaboracion del bucle FOR para incluir mas de un tipo de dieta a la receta creada.
@@ -106,7 +107,7 @@ try{
 //**ALL & TYPE by TYPE-DIET from DB:
 router.get('/diets', async(req, res)=>{
     const {nameType}=req.query;
-    console.log('hola')
+    //console.log('hola')
     //console.log(Type.findAll)
     //const typesDiet= await getTypeDiet(); 
     try{
@@ -145,6 +146,5 @@ router.delete('/delete/:id', async(req, res)=>{
     }
     
 }); 
-
 
 module.exports = router;
