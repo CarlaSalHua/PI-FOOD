@@ -85,19 +85,19 @@ const rootReducer =(state= initialState, action)=>{
             const orderByHealthScore=
             action.payload==='min-max'?
             scoreFilter.sort((a,b)=>{
-                if(a.healthyScore<b.healthyScore){
+                if(a.healthScore<b.healthScore){
                     return -1;
                 }
-                if(b.healthyScore<a.healthyScore){
+                if(b.healthScore<a.healthScore){
                     return 1;
                 }
                 return 0;
             }) : 
             scoreFilter.sort((a,b)=>{
-                if(a.healthyScore<b.healthyScore){
+                if(a.healthScore<b.healthScore){
                     return 1;
                 }
-                if(b.healthyScore<a.healthyScore){
+                if(b.healthScore<a.healthScore){
                     return -1;
                 }
                 return 0;

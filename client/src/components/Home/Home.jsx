@@ -69,7 +69,7 @@ const Home=()=> {
                             image={e.image} 
                             summary={e.summary} 
                             diets={e.diets} 
-                            healthyScore={e.healthyScore} 
+                            healthScore={e.healthScore} 
                             step={e.step}
                         />
                     </fragment>      
