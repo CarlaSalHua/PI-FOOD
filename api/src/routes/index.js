@@ -38,12 +38,12 @@ router.get('/recipes', async(req, res)=>{
 //*2*[ ] GET /recipes/{idReceta}:
 //* getting all recipes(API) by ID * 
 // NOTA: ADICIONAR LOS DE LA BASE DE DATOS
-router.get('/recipes/:idReceta', async(req, res)=>{
- const {idReceta}= req.params;
- const idTotalRecipes= await getById(idReceta);
+router.get('/recipes/:idRecipe', async(req, res)=>{
+ const {idRecipe}= req.params;
+ const idTotalRecipes= await getById(idRecipe);
  try{
-     if(idReceta){
-        idReceta?
+     if(idRecipe){
+        idRecipe?
         res.status(200).send(idTotalRecipes):
         res.status(404).send('No ingreso un id valido.')
      }
@@ -62,11 +62,11 @@ router.post('/recipes', async(req, res)=>{
 
     const newRecipe= await Recipe.create({
         name,
-        image,
         summary,
+        image,
         healthScore,
-        steps,
         diets,
+        steps,
     });
     try{
         //Elaboracion del bucle FOR para incluir mas de un tipo de dieta a la receta creada.

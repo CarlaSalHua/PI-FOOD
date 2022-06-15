@@ -18,7 +18,7 @@ const getApi = async () => {
       summary: re.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
       diets: re.diets,
       spoonacularScore: re.spoonacularScore,
-      healthyScore: re.healthScore,
+      healthScore: re.healthScore,
       dishes: re.dishTypes,
       steps: re.analyzedInstructions[0]?.steps.map((st) => ({
         num: st.number,
@@ -82,7 +82,7 @@ const getById = async (id)=> {
       summary: allId.data.summary,
       diets: allId.data.diets,
       spoonacularScore: allId.data.spoonacularScore,
-      healthyScore: allId.data.healthScore,
+      healthScore: allId.data.healthScore,
       dishes: allId.data.dishTypes,
       steps: allId.data.analyzedInstructions[0]?.steps.map((st) => ({
         num: st.number,
