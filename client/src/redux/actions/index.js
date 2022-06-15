@@ -35,17 +35,17 @@ const recipesByName = (name)=>{
   };
 };
 
-// //*2*[ ] GET /recipes/{idReceta}:
-// //* getting all recipes(API) by ID *
-// const recipesById = (idReceta)=> {
-//     return async (dispatch)=> {
-//     let json = await axios.get(`http://localhost:3001/recipes/${idReceta}`);
-//     return dispatch ({
-//         type: 'GET_RECIPES_ID',
-//         payload: json.data,
-//     });
-//   };
-// };
+//*2*[ ] GET /recipes/{idReceta}:
+//* getting all recipes(API) by ID *
+const recipesById = (idRecipe)=> {
+    return async (dispatch)=> {
+    let json = await axios.get(`http://localhost:3001/recipes/${idRecipe}`);
+    return dispatch ({
+        type: 'GET_RECIPES_ID',
+        payload: json.data,
+    });
+  };
+};
 
 // const cleanData = ()=> {
 //     return (dispatch)=> {
@@ -69,26 +69,26 @@ const recipesByName = (name)=>{
 // };
 
 
-// //*4.1*[ ] GET /typediets/{nameTypeDiet}
-// //**by nameTYPE from API:
-// const dietsByNameType = (dieta)=> {
-//     return async (dispatch)=> {
-//         let json = await axios.get(`http://localhost:3001/typediets/${dieta}`);
-//         return dispatch ({
-//             type: 'GET_TYPES_NAME',
-//             payload: json.data,
-//         });
-//     };
-// }; 
+//*4.1*[ ] GET /typediets/{nameTypeDiet}
+//**by nameTYPE from API:
+const dietsByNameType = (dieta)=> {
+    return async (dispatch)=> {
+        let json = await axios.get(`http://localhost:3001/typediets/${dieta}`);
+        return dispatch ({
+            type: 'GET_TYPES_NAME',
+            payload: json.data,
+        });
+    };
+}; 
 
-// //*3*[ ] POST /recipes:
-// const createRecipe = (payload)=> {
-// //*payload as recipe*
-//     return async ()=> {
-//         let json = await axios.post(`http://localhost:3001/recipes`, payload)
-//         return json;
-//     };
-// };
+//*3*[ ] POST /recipes:
+const createRecipe = (payload)=> {
+//*payload as recipe*
+    return async function (dispatch){
+        let json = await axios.post(`http://localhost:3001/recipes`, payload)
+        return json;
+    };
+};
 
 // //*DELETE /delete/:id
 // const deleteRecipe = (id)=> { 
@@ -135,6 +135,9 @@ const filter_created= (payload)=>{
 export {
    getAllRecipes,
    recipesByName,
+   recipesById,
+   createRecipe,
+   dietsByNameType,
    filterA_Z,
    filter_diet_types,
    filter_health_score,
@@ -143,8 +146,6 @@ export {
     // recipesById,
     // cleanData,
     // getTypesDiets,
-    // dietsByNameType,
-    // createRecipe,
     // deleteRecipe
 
     

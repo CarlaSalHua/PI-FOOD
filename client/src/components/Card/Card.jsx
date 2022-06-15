@@ -6,7 +6,7 @@ const Card =({id, name, image, summary, diets, healthyScore})=> {
     return(
         <div className={s.cardConteiner}>
             <Link to={`/recipe/${id}`}>
-                <h3 className={s.name}>{name}</h3>
+            <h3 className={s.name}>{name}</h3>
             <img className={s.image} src={image} alt='img'/>
             </Link>
             <p>Score: {healthyScore}</p>
@@ -14,7 +14,6 @@ const Card =({id, name, image, summary, diets, healthyScore})=> {
             <p>Summary: {summary}</p>
         </div>
     )
-
 }
 
 export default Card;

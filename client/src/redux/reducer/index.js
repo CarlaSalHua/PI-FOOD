@@ -4,7 +4,8 @@ const initialState= {
     xrecipe:[],
     error: {},
     allRecipes: [],
-    // diets: [],
+    recipeDetail:{},
+    diets: [],
     //post: {},
     // currentPage: 0,
 }
@@ -25,10 +26,25 @@ const rootReducer =(state= initialState, action)=>{
         
         /***********************************/
             case 'GET_RECIPES_NAME':
-            return{
-                ...state,
-                recipes: action.payload,
-            }
+                return{
+                    ...state,
+                    recipes: action.payload,
+                }
+
+        /***********************************/
+            case 'GET_RECIPES_ID':
+                return{
+                    ...state,
+                    recipeDetail: action.payload[0],
+                }
+
+        /***********************************/
+
+            case 'GET_TYPES_NAME':
+                return{
+                    ...state,
+                    diets: action.payload
+                }
 
         /***********************************/
 
@@ -122,6 +138,7 @@ const rootReducer =(state= initialState, action)=>{
         // }
         
         /***********************************/
+
 
 
     }

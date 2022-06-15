@@ -1,10 +1,12 @@
 import React from 'react';
 import {useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../../redux/actions';
 import Card from '../Card/Card';
-import Search from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
+import NavBar from '../NavBar/NavBar';
+
 import FilterAlphabetical from '../Filters/FilterAlphabetical';
 import FilterDietTypes from '../Filters/FilterDietTypes';
 import FilterHealthScore from '../Filters/FilterHealthScore';
@@ -28,12 +30,12 @@ const Home=()=> {
     }
 
     return (
-        <div>
-            <h1>Healthy Food</h1>
-            <Link to='/recipes'>Create my Recipe</Link>
+        <div className='contenedorHome'>
+            <NavBar/>
+            {/* <Link to='/recipes'>Create my Recipe</Link> */}
             <div>
                 <button onClick={e=> {handleClick(e)}}>Load recipes</button>
-                <Search/>
+            <SearchBar/>
             </div>
 
             <div>
@@ -60,7 +62,7 @@ const Home=()=> {
                 {allRecipes.length?
                 allRecipes.map((e)=>{
                     return(
-                    <fragment className='card'>
+                    <fragment className={s.card}>
                         <Card 
                             id={e.id} 
                             name={e.name} 

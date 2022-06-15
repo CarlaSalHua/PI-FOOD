@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
 import RecipeCreate from './components/RecipeCreate/RecipeCreate';
+import RecipeDetail from './components/RecipeDetail/RecipeDetail'
 
 function App() {
   return (
@@ -12,12 +13,10 @@ function App() {
         <div className="App">
           <Switch>
           <Route exact path='/' component={LandingPage}/>
-          <Route exact path= '/home' component={Home}/>
-             
-          <Route exact path='/newRecipe' component={RecipeCreate}/>
+          <Route exact path='/home' component={Home}/>
+          <Route exact path='/recipes/:id' component={RecipeDetail}/>
+          <Route exact path='/recipes' component={RecipeCreate}/>
           </Switch>          
-          {/* <Route></Route>
-          <Route></Route> */}
         </div>
       </BrowserRouter>
   );
