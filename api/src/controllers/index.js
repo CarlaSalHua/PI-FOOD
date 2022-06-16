@@ -15,7 +15,7 @@ const getApi = async () => {
       id: re.id,
       name: re.title,
       image: re.image,
-      summary: re.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
+      summary: re.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g,''),
       diets: re.diets,
       spoonacularScore: re.spoonacularScore,
       healthScore: re.healthScore,
@@ -78,7 +78,7 @@ const getById = async (id)=> {
     const idRecipes={
       id: allId.data.id,
       name: allId.data.title,
-      img: allId.data.image,
+      image: allId.data.image,
       summary: allId.data.summary,
       diets: allId.data.diets,
       spoonacularScore: allId.data.spoonacularScore,
