@@ -12,7 +12,6 @@ const FilterDietTypes=() => {
         dispatch(getTypesDiets(e.target.value))
     };
 
-
     return(
         <div>
             <label>Filter by diet types</label>
@@ -20,20 +19,17 @@ const FilterDietTypes=() => {
                         <option value='all'>All type diets</option>
                         <option value='gluten free'>gluten-free</option>
                         <option value='dairy free'>dairy free</option>
+                        <option value='fodmap friendly'>fodmap friendly</option>
                         <option value='ketogenic'>ketogenic</option>
-                        <option value='vegetarian'>vegetarian</option>
                         <option value='primal'>primal</option>
-                        <option value='lacto vegetarian'>lacto-vegetarian</option>
-                        <option value='ovo vegetarian'>ovo-vegetarian</option>
+                        <option value='lacto ovo vegetarian'>lacto-ovo vegetarian</option>
                         <option value='vegan'>vegan</option>
-                        <option value='paleo'>paleo</option>
-                        <option value='low fodmap'>low-fodmap</option>
-                        <option value='whole30'>whole30</option>
+                        <option value='paleolithic'>paleolithic</option>
+                        <option value='whole 30'>whole30</option>
+                        <option value='pescatarian'>pescetarian</option>
                 </select>
         </div>
     );
-
-
 };
 
 export default FilterDietTypes;
