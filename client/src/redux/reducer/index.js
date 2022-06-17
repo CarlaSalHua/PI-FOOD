@@ -1,9 +1,9 @@
 
 const initialState= {
     recipes: [],
+    allRecipes: [],
     xrecipe:[],
     error: {},
-    allRecipes: [],
     recipeDetail:{},
     diets: [],
     //post: {},
@@ -19,11 +19,31 @@ const rootReducer =(state= initialState, action)=>{
                 recipes: action.payload,
                 xrecipe: action.payload,
                 allRecipes: action.payload,
+                //diets: action.payload,
                 error:{},
             }
         default:
             return state;
         
+        /***********************************/
+
+        case 'GET_ALL_TYPES':
+            const typeDiets=[];
+            state.allRecipes.forEach((e)=>{
+                e.diets.forEach((t)=>{
+                    if(t===action.payload){
+                        typeDiets.push(e)
+                    }
+                })
+            });
+            console.log('hola diets',typeDiets)
+            return{
+                ...state,
+                recipes:action.payload==='all'?state.allRecipes:typeDiets,
+                diets: action.payload,
+            }
+
+
         /***********************************/
             case 'GET_RECIPES_NAME':
                 return{
@@ -35,7 +55,7 @@ const rootReducer =(state= initialState, action)=>{
             case 'GET_RECIPES_ID':
                 return{
                     ...state,
-                    recipeDetail: action.payload[0],
+                    recipeDetail: action.payload,
                 }
 
         /***********************************/
@@ -141,12 +161,7 @@ const rootReducer =(state= initialState, action)=>{
 
 
 
-    }
-
-   
-    
+    }    
 };
-
-
 
 export default rootReducer;

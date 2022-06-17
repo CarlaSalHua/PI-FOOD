@@ -1,14 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { filter_diet_types } from "../../redux/actions";
+import { getTypesDiets } from "../../redux/actions";
 
 const FilterDietTypes=() => {
+
     const dispatch= useDispatch();
 
     const handleDietType=(e)=>{
         e.preventDefault();
-        dispatch(filter_diet_types(e.target.value))
+        //console.log('console 2',e.target.value)
+        dispatch(getTypesDiets(e.target.value))
     };
+
 
     return(
         <div>
@@ -16,8 +19,10 @@ const FilterDietTypes=() => {
                 <select onChange={handleDietType}>
                         <option value='all'>All type diets</option>
                         <option value='gluten free'>gluten-free</option>
+                        <option value='dairy free'>dairy free</option>
                         <option value='ketogenic'>ketogenic</option>
                         <option value='vegetarian'>vegetarian</option>
+                        <option value='primal'>primal</option>
                         <option value='lacto vegetarian'>lacto-vegetarian</option>
                         <option value='ovo vegetarian'>ovo-vegetarian</option>
                         <option value='vegan'>vegan</option>

@@ -136,7 +136,7 @@ const RecipeCreate =()=>{
                     {/* ************************************ */}
                     <div>
                         <label>Image(URL):</label>
-                        <input onChange={handleChange} type='text' name='image'/>
+                        <input onChange={handleChange} type='text' id='image' name='image'/>
                         <span>{errorImage}</span>
                     </div>
                     {/* ************************************ */}

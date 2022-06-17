@@ -56,17 +56,15 @@ const recipesById = (idRecipe)=> {
 //     };
 // };
 
-// //*4.0*[ ] GET /diets:  
-// //** ALL & TYPE by TYPE-DIET from DB
-// const getTypesDiets = ()=> {
-//     return async (dispatch)=>{
-//         let json = await axios.get(`http://localhost:3001/diets`);
-//         return dispatch ({
-//             type: 'GET_ALL_TYPES',
-//             payload: json.data,
-//         });
-//     };
-// };
+//*4.0*[ ] GET /diets:  
+//** ALL & TYPE by TYPE-DIET from DB
+const getTypesDiets = (payload)=> {
+  
+  return ({
+            type: 'GET_ALL_TYPES',
+            payload: payload,
+        });
+};
 
 
 //*4.1*[ ] GET /typediets/{nameTypeDiet}
@@ -85,7 +83,7 @@ const dietsByNameType = (dieta)=> {
 const createRecipe = (payload)=> {
 //*payload as recipe*
     return async function (dispatch){
-        let json = await axios.post(`http://localhost:3001/recipes`, payload)
+        let json = await axios.post(`http://localhost:3001/createRecipe`, payload)
         return json;
     };
 };
@@ -100,6 +98,7 @@ const createRecipe = (payload)=> {
 // };
 // //esconder el delete para la presentacion xd
 //
+
 //*ASCENDANT FILTER (A-Z) \ DEFAULT:(Z-A)*
 const filterA_Z= (payload)=> {
     return {
@@ -142,10 +141,10 @@ export {
    filter_diet_types,
    filter_health_score,
    filter_created,
+   getTypesDiets,
 }
     // recipesById,
     // cleanData,
-    // getTypesDiets,
     // deleteRecipe
 
     

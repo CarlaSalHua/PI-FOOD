@@ -9,9 +9,10 @@ const NavBar= ()=> {
             </Link>
 
             <div>
-                <Link to={'/recipes'}>
+                <Link to={'/createRecipe'}>
                     <span>Create my recipe</span>
                 </Link>
+                
                 <Link to={'/home'}>
                     <span>Home</span>
                 </Link>
