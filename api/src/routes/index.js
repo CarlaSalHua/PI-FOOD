@@ -56,9 +56,9 @@ router.get('/recipes/:idRecipe', async(req, res)=>{
  }
 });
 
-//*3*[ ] POST /recipes:
-router.post('/recipes', async(req, res)=>{
-    const {name, image, summary,  healthScore, steps, diets}= req.body;
+//*3*[ ] POST /recipe:
+router.post('/createRecipe', async(req, res)=>{
+    const {name, image, summary, healthScore, steps, diets}= req.body;
 
     const newRecipe= await Recipe.create({
         name,
