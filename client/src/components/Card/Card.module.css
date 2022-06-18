@@ -1,10 +1,56 @@
+
 .cardConteiner{
-    width: 30%;
-    max-width: 120rem;
-    margin: 1px auto;
-    background: rgba(65, 210, 101, 0.863);
-    padding: 18px 18px;
-    box-shadow: 3px -1px 50px -11px rgba(1, 169, 12, 0.9);
-    -webkit-box-shadow: 3px -1px 50px -11px rgba(3, 138, 30, 0.745);
-    -moz-box-shadow: 3px -1px 50px -11px rgb(0, 0, 0);
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    padding: 30px;
+    background-color: #d5fdc2;
+    border-top-left-radius: 20px;
+    transform: translateY(90px);
+    transition: transform .25s;
+}
+
+.cardConteiner::before {
+    content: '';
+    position: absolute;
+    top: -47px;
+    right: -45px;
+    width: 90px;
+    height: 100px;
+    transform: rotate(-175deg);
+    border-radius: 50%;
+    box-shadow: inset 48px 48px #d5fdc2;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.name {
+    color: green;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+.score {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.diets {
+    font-size: 14px;
+    opacity: 0;
+    margin-bottom: 30px;
+    transition: opacity .5s;
+}
+
+.card:hover .cardConteiner {
+    transform: translateY(0);
+}
+
+.card:hover .diets {
+    opacity: 1;
+    transition-delay: .25s;
 }

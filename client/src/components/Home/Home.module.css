@@ -1,12 +1,19 @@
-.card {
-/* display: grid ;
-grid-template-columns: 1fr 1fr 1fr; */
-/* grid-gap: 10px; */
-/* grid-auto-rows: minmax(100px, auto);
+.contentHome {
+    background-color: rgb(250, 250, 174);
 }
+
 .cardGrid{
-    /* display: grid ;
+    display: grid ;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);  */
+    grid-auto-rows: minmax(100px, auto);
 }
+
+.card {
+    display: grid ;
+    justify-content: center;
+    width: 100%;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+

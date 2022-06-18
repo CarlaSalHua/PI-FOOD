@@ -37,10 +37,10 @@ const Home = () => {
     console.log('Home', total , 'page',page, 'forPage', forPage )
 
   return (
-    <div className="contenedorHome">
+    <div className="contentHome">
       
       <div>
-          <div>
+          <div className={s.NavBar}>
           <NavBar />
           </div>
           {/*********************************************/}
@@ -76,7 +76,7 @@ const Home = () => {
 
                   ( allRecipes?.slice((page-1)* forPage, (page-1)*forPage+forPage).map((e) => {
                       return (
-                          <fragment className={s.card}>
+                          <div className={s.card}>
                           <Card
                               id={e.id}
                               name={e.name}
@@ -86,7 +86,7 @@ const Home = () => {
                               healthScore={e.healthScore}
                               step={e.step}
                           />
-                          </fragment>
+                          </div>
                       )
                   })
                   ): !allRecipes.length>0?(
