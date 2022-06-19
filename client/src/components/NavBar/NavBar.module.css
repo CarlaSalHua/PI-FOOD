@@ -1,0 +1,77 @@
+.contentNavbar {
+    position: relative;
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(186, 216, 168);
+    padding: 9px;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+     */
+
+}
+
+.title {
+    /* position: relative; */
+    width: 0.5%;
+    /* height: 1%; */
+    text-decoration: none;
+    align-items: center;
+    margin-right: 25%;
+    margin-top: -50px;
+}
+
+.logo{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    /* margin-top: -20px; */
+}
+
+.logoName {
+    position: absolute;
+    font-size: 1.7em;
+    color: green;
+    padding-top: 15px;
+    padding-left: 80px;
+}
+.menu{
+    padding-top: 20px;
+    padding-bottom: 5px;
+    padding-right: 100px;
+}
+
+.list {
+    display: flex;
+    gap: 100px;
+}
+.searchBar {
+    width: 60%;
+    height: 45px;
+}
+
+.recipe {
+    height: 10px;
+    width: 100%;
+    padding-left: 335px;
+    text-decoration: none;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #0b530a;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+
+.home {
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #0b530a;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+

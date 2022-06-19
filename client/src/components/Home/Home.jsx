@@ -48,7 +48,7 @@ const Home = () => {
             <button onClick={(e)=> handleClick(e)}>
               Load recipes 🍽
             </button>
-            <SearchBar />
+            {/* <SearchBar /> */}
           </div>
           {/*********************************************/}
           <div>

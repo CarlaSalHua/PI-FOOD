@@ -1,25 +1,39 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar'
+import s from './NavBar.module.css';
+import logo from '../../imagenes/Logos/logoNature.png';
 
 const NavBar= ()=> {
     return(
-        <nav>
-            <Link to='/home'>
-                <h1>Healthy Food</h1>
-            </Link>
-
-            <div>
-                <Link to={'/createRecipe'}>
-                    <span>Create my recipe</span>
-                </Link>
+        <nav className={s.contentNavbar}>
                 
-                <Link to={'/home'}>
-                    <span>Home</span>
-                </Link>
-                {/* <Link to={'/aboutMe'}>
-                    <span>About the creator</span>
-                </Link> */}
-            </div>
+                <div className={s.title}>
+                    <Link to='/home' className={s.title}>
+                    <img src={logo} alt='' className={s.logo}/>
+                    <h1 className={s.logoName}>Healthy Food Web</h1>
+                    </Link>
+                </div>
+
+
+                <div className={s.menu}>
+                    <div className={s.list}>
+                        <div className={s.searchBar}>
+                        <SearchBar className={s.searchBar}/>
+                        </div>
+                        <Link to={'/createRecipe'} className={s.recipe} >
+                            <span>Create my recipe</span>
+                        </Link>
+                        
+                        <Link to={'/home'} className={s.home}>
+                            <span>Home</span>
+                        </Link>
+                        {/* <Link to={'/aboutMe'}>
+                            <span>About the creator</span>
+                        </Link> */}
+                    </div>
+                </div>
+
         </nav>
     );
 };
