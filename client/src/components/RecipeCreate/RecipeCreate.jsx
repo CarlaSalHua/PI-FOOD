@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe, dietsByNameType } from "../../redux/actions";
 import { validationImage, validationText } from "./Validations";
+import healthyGirl from '../../imagenes/healthyGirl.png';
+import s from './RecipeCreate.module.css'
 
 const RecipeCreate =()=>{
     const dispatch = useDispatch();
@@ -115,46 +117,47 @@ const RecipeCreate =()=>{
 
     
     return (
-    <div>
-        <div>
+    <div className={s.generalContent}>
+        <img src={healthyGirl} alt='' />
+        
+        <div className={s.content} >
 
-            <Link to='/home'><button>Back</button></Link>
-            <h3>Create your healthy recipe!</h3>
+            <h3 className={s.title}>Create your healthy recipe!</h3>
 
             <form onSubmit={(e)=>e.preventDefault()} action=''>
                 {/* *********************************** */}
-                <div>
+                <div className={s.contentName}>
                     <label>Name Recipe:{' '}</label>
                     <input type='text' value={input.name} name='name' id='name' onChange={handleChange} autoComplete='off'/>
                     <span>{errorText.name}</span>
                 </div>
-                {/* ************************************ */}
-                <div>    
-                    <div>
+                {/* ****************************************** */}
+                <div className={s.contentImage}>    
+                    <div className={s.contentImg} >
                         <img src={imageRecipe} alt=''/>
                     </div>
-                    {/* ************************************ */}
-                    <div>
+                    {/* *********************** */}
+                    <div className={s.contentUrl}>
                         <label>Image(URL):</label>
                         <input onChange={handleChange} type='text' id='image' name='image'/>
                         <span>{errorImage}</span>
                     </div>
-                    {/* ************************************ */}
+                    {/* *********************** */}
                     <button onClick={()=>handleImage()}>Add image</button>
                 </div>
-                {/* ************************************ */}
+                {/* ********************************************** */}
                 <div>
                     <label htmlFor='summary'>Summary:</label>
                     <textarea type='text' name='summary' id='summary' onChange={handleChange}/>
                     <span>{errorText.summary}</span>
                 </div>
-                {/* ************************************ */}
+                {/* ********************************************** */}
                 <div>
                     <label htmlFor='healthScore'>Healthy Score:</label>
                     <input type='number' name='healthScore' id='healthScore' min={0} max={100}/>
                     <span>{errorText.healthScore}</span>
                 </div>
-                {/* ************************************ */}
+                {/* ********************************************** */}
                 <div>
 
                     <div>
@@ -182,6 +185,7 @@ const RecipeCreate =()=>{
             <button onClick={()=>handleInputs(input)}>
                 Create
             </button>
+        <Link to='/home'><button>Back</button></Link>
         </div>
         {
             succesPost&&(
