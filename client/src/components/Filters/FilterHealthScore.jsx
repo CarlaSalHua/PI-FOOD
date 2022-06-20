@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { filter_health_score } from '../../redux/actions';
+import s from './Filters.module.css'
 
 const FilterHealthScore=()=>{
     const dispatch= useDispatch();
@@ -11,7 +12,7 @@ const FilterHealthScore=()=>{
     };
 
     return (
-        <div>
+        <div className={s.filterHealthScore}>
             <label htmlFor=''>Filter by score</label>
             <select defaultValue={'all'} onChange={handleHealthScore}>
                         <option value= 'all' hidden>All recipes</option>

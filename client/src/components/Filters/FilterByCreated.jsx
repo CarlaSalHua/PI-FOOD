@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { filter_created } from "../../redux/actions";
+import s from './Filters.module.css'
 
 const FilterByCreated = ()=> {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const FilterByCreated = ()=> {
     };
 
     return (
-        <div>
+        <div className={s.filterCreated}>
             <label htmlFor=''>Filter by Created</label>
             <select onChange={handleFilterByCreated}>
                         <option value= 'all'>All recipes</option>

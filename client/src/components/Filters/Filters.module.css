@@ -1,0 +1,115 @@
+
+.filterCreated {
+    position: relative;
+    display: flex;
+    width: 230px;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.filterCreated label {
+    position: absolute;
+    justify-content: center;
+}
+
+.filterCreated select {
+    position: relative;
+    border: 0;
+    border-radius: 60px;
+    width: 200px;
+    height: 30px;
+    margin-top: 28px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.filterCreated option {
+    margin-top: 28px;
+    font-size: large;
+    font-weight: bold;
+    
+}
+
+/* ********************** */
+
+.filterOrder {
+    position: relative;
+    display: flex;
+    width: 230px;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.filterOrder label {
+    position: absolute;
+    justify-content: center;
+}
+
+.filterOrder select {
+    position: relative;
+    border: 0;
+    border-radius: 60px;
+    width: 200px;
+    height: 30px;
+    margin-top: 28px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+/* ********************** */
+
+.filterHealthScore {
+    position: relative;
+    display: flex;
+    width: 230px;
+    justify-content: center;
+    padding-top: 8px;
+
+}
+
+.filterHealthScore label {
+    position: absolute;
+    justify-content: center;
+}
+
+.filterHealthScore select {
+    position: relative;
+    border: 0;
+    border-radius: 60px;
+    width: 200px;
+    height: 30px;
+    margin-top: 28px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+/* ********************** */
+
+.filterDiets {
+    position: relative;
+    display: flex;
+    width: 230px;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.filterDiets label {
+    position: absolute;
+    justify-content: center;
+}
+
+.filterDiets select {
+    position: relative;
+    border: 0;
+    border-radius: 60px;
+    width: 250px;
+    height: 30px;
+    margin-top: 28px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}

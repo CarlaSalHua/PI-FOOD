@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes } from "../../redux/actions";
 import Card from "../Card/Card";
-import SearchBar from "../SearchBar/SearchBar";
+// import SearchBar from "../SearchBar/SearchBar";
 import NavBar from "../NavBar/NavBar";
 import Pagination from '../Paginacion/Paginacion'
 import Loading from "../Loading/Loading";
@@ -43,34 +43,37 @@ const Home = () => {
           <div className={s.NavBar}>
           <NavBar />
           </div>
-          {/*********************************************/}
-          <div>
-            <button onClick={(e)=> handleClick(e)}>
-              Load recipes 🍽
-            </button>
             {/* <SearchBar /> */}
-          </div>
           {/*********************************************/}
-          <div>
+          <div className={s.filtersBar}>
               <div>
                 <h3>Recipes</h3>
                 <FilterByCreated />
               </div>
+              {/****/}
               <div>
                 <h3>Alphabetical order</h3>
                 <FilterAlphabetical />
               </div>
-              <div>
+              {/****/}
+              <div >
                 <h3>Health Score</h3>
                 <FilterHealthScore />
               </div>
+              {/****/}
               <div>
                 <h3>Diet types</h3>
                 <FilterDietTypes />
               </div>
           </div>
           {/**********************************************/}
-          <div>
+          <div className={s.contentLoad}>
+            <button onClick={e=> handleClick(e)}>
+              Load recipes 🍽
+            </button>
+          </div>
+          {/*********************************************/}
+          <div className={s.contentPincipal}>
               <div className={s.cardGrid}>
                 { allRecipes.length>0?
 

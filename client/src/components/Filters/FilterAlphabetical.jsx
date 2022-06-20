@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import { filterA_Z } from '../../redux/actions';
+import s from './Filters.module.css'
 
 const FilterAlphabetical= () => {
     const dispatch= useDispatch();
@@ -12,7 +13,7 @@ const FilterAlphabetical= () => {
     };
 
     return (
-        <div>
+        <div className={s.filterOrder}>
             <label htmlFor=''>Filter by A-Z</label>
                 <select defaultValue={'all'} onChange={handleAlphabetical}>
                     <option value='all' hidden >All recipes</option>

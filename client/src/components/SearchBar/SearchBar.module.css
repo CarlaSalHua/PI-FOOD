@@ -12,7 +12,7 @@
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    bottom: 14px;
+    bottom: 10px;
     right: 170px;
 }
 
@@ -23,7 +23,7 @@
        display: flex;
        align-items: center;
        border-radius: 60px;
-       padding: 6px 8px 6px 40px;
+       padding: 5px 8px 5px 28px;
 }
 
 .input {
@@ -31,7 +31,7 @@
     flex:1;
     border: 0;
     outline: none;
-    padding: 10px 0px;
+    padding: 9px 0px;
     font-size: 18px;
     color: #ffffff
 }
@@ -47,8 +47,8 @@
 .container button {
     border: 0;
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background: #328f40;
     cursor: pointer;
 }

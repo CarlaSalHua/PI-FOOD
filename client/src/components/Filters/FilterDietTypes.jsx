@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { getTypesDiets } from "../../redux/actions";
-
+import s from './Filters.module.css'
 const FilterDietTypes=() => {
 
     const dispatch= useDispatch();
@@ -13,20 +13,20 @@ const FilterDietTypes=() => {
     };
 
     return(
-        <div>
+        <div className={s.filterDiets}>
             <label>Filter by diet types</label>
                 <select onChange={handleDietType}>
                         <option value='all'>All type diets</option>
-                        <option value='gluten free'>gluten-free</option>
-                        <option value='dairy free'>dairy free</option>
-                        <option value='fodmap friendly'>fodmap friendly</option>
-                        <option value='ketogenic'>ketogenic</option>
-                        <option value='primal'>primal</option>
-                        <option value='lacto ovo vegetarian'>lacto-ovo vegetarian</option>
-                        <option value='vegan'>vegan</option>
-                        <option value='paleolithic'>paleolithic</option>
-                        <option value='whole 30'>whole30</option>
-                        <option value='pescatarian'>pescetarian</option>
+                        <option value='gluten free'>Gluten-free</option>
+                        <option value='dairy free'>Dairy free</option>
+                        <option value='fodmap friendly'>Fodmap friendly</option>
+                        <option value='ketogenic'>Ketogenic</option>
+                        <option value='primal'>Primal</option>
+                        <option value='lacto ovo vegetarian'>Lacto-ovo-vegetarian</option>
+                        <option value='vegan'>Vegan</option>
+                        <option value='paleolithic'>Paleolithic</option>
+                        <option value='whole 30'>Whole30</option>
+                        <option value='pescatarian'>Pescetarian</option>
                 </select>
         </div>
     );
