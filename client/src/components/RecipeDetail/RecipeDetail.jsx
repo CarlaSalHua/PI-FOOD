@@ -96,7 +96,7 @@ const RecipeDetail = () => {
             
             // <img className='imgLoading' src="https://i.pinimg.com/originals/c4/cb/9a/c4cb9abc7c69713e7e816e6a624ce7f8.gif" alt="" />
         }
-        <Link to='/home'><button>Back</button></Link>
+        <Link to='/home'><button className={s.backButton}>Back Home</button></Link>
     </div>
   );
 };

@@ -22,8 +22,10 @@ const Diet = (diet) => {
         <div className={s.containerDiets}>
             <h4>Diet Types:</h4>
             {   diet.diets?.map((e, i)=>(
-                <div key={i} className={s.imgDiets}>
-                    <img src={iconDietTypes[e]} alt=''/>
+                <div key={i} className={s.imgDiets}><br/>
+                    <div className={s.contentImg}>
+                        <img src={iconDietTypes[e]} alt=''/>
+                    </div>
                     <p>{e[0].toUpperCase()+e.slice(1)}</p>
                 </div>
             ))}

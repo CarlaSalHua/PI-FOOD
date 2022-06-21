@@ -4,14 +4,58 @@
 
 .containerDiets {
     position: absolute;
-    width: 500px;
-    background: rgba(224, 248, 194, 0.8);
-    top: 55%;
+    width: 93%;
+    max-width: 93%;
+    height: 165px;
+    display: flex;
+    justify-content: justify;
+    background: #ccda9c17;
+    bottom: 11.25%;
     left: 3%;
 }
 
+.containerDiets h4 {
+    position: absolute;
+    margin-top: -60px;
+    font-size: 2.5em;
+    color: rgb(39, 126, 25);
+    justify-content: justify;
+    background: #e8eed478;
+    padding: 7px 10px 5px 7px;
+}
+
+.imgDiets {
+    position: relative;
+    justify-content: justify;
+    margin: 0% 3% 0% 1.5%;
+    left: 1%;
+    margin-top: -20px;
+}
+
 .imgDiets img {
-    width: 7%;
-    /* height: 70px; */
-    max-width: 80px;
+    width: 90px;
+    height: 85px;
+    max-width: 100px;
+    margin: 10% 0% 5% 0%;    
+}
+
+.imgDiets p {
+    font-size: 1.15em;
+    width: 100px;
+    font-weight: bold;
+    color: rgb(47, 158, 43);
+    letter-spacing: 1px;
+    padding-top: 10px;
+}
+
+.contentImg {
+    height: 110px;
+    width: 115px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    margin-top:12%;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
