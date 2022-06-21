@@ -1,0 +1,17 @@
+/* .containerDiets {
+
+} */
+
+.containerDiets {
+    position: absolute;
+    width: 500px;
+    background: rgba(224, 248, 194, 0.8);
+    top: 55%;
+    left: 3%;
+}
+
+.imgDiets img {
+    width: 7%;
+    /* height: 70px; */
+    max-width: 80px;
+}

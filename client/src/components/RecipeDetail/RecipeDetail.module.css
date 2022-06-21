@@ -1,7 +1,7 @@
 .contentDetail {
     background-image: url('../../imagenes/dishes1.jpg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-position: center;
     background-size: cover;
     position: relative;
@@ -9,23 +9,126 @@
     height: 100vh;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     overflow: hidden;
 }
 
 .content2 {
-    width: 150%;
+    position: relative;
+    width: 80%;
+    height: 90%;
     background: rgba(224, 248, 194, 0.8);
-    display:flex;
-    align-items: center ;
+    /* display:flex; */
+    /* align-items: center ; */
+    /* justify-content: space-around; */
+    /* text-align: center; */
+    margin: 2.6% 9.5% 2.6% 9.5%;
 }
 
 .title {
-    font-size: 4em;
+    position: relative;
+    font-size: 3.7em;
     color: green;
-    width:500px;
-
+    width: 725px;
+    text-align: center;
+    justify-content: center;
+    max-width: 725px;
+    top: 4%;
+    left: 43%;
+    /* right: 10%; */
 }
 
-.img {
-
+.imageDetail img {
+    position: absolute;
+    width: 375px;
+    height: 280px;
+    border-radius: 15% 0% 15% 15%;
+    transform: rotate(-7.5deg);
+    top: 13%;
+    left: 5.5%;
 }
+
+.healthScore {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    max-width: 150px;
+    background: rgba(73, 113, 24, 0.916);
+    color: antiquewhite;
+    border-radius: 50%;
+    padding: 14px 0px 0px 0px;
+    top: 3%;
+    left: 27%;
+}
+
+.healthScore h4 {
+    font-size: 1.05em;
+}
+
+.healthScore span {
+    font-size: 3.8em;
+}
+
+.contentSummary {
+    position: absolute;
+    background: rgba(177, 219, 125, 0.8);
+    width: 920px;
+    max-width: 950px;
+    margin-top: 4%;
+    left: 35%;
+    right: 2%;
+}
+
+.contentSummary h3 {
+    font-size: 2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify;
+    padding: 15px 0px 5px 20px;
+}
+
+.contentSummary p {
+    text-align: justify;
+    padding: 0px 20px 15px 20px;
+    font-size: 1.15em;
+    word-spacing: 1.8px;
+    line-height: 23px;
+}
+
+.buttonContainer button{
+    position: absolute;
+    border: 0;
+    border-radius: 60px;
+    width: 300px;
+    height: 50px;
+    background: #328f40;
+    cursor: pointer;
+    right: 60px;
+    bottom: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color:rgb(244, 246, 213);
+}
+
+.contentStep {
+    position: absolute;
+    background: rgba(224, 248, 194, 0.8);
+    bottom: 3%;
+    left: 3%;
+    right: 3%;
+}
+
+.contentStep h3 {
+    font-size: 2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: right;
+    padding: 10px 20px 10px 0px;
+}
+
+.contentStep p {
+    text-align: justify;
+    padding: 0px 20px 15px 20px;
+    font-size: 1em;
+    word-spacing: 1.8px;
+    line-height: 20px;
+}
+

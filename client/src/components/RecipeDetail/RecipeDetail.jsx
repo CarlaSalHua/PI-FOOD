@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-//import {useNavigate} from 'react-router-dom'
-import s from './RecipeDetail.module.css'
 import { recipesById } from "../../redux/actions";
+import { Link } from "react-router-dom";
+import s from './RecipeDetail.module.css';
+import Diet from "../DietTypes/DietTypes";
 
 const RecipeDetail = () => {
-  // const dispatch = useDispatch();
   // let navigate = useNavigate();
   const dispatch = useDispatch();
   const {id} = useParams();
@@ -18,6 +18,8 @@ const RecipeDetail = () => {
       dispatch(recipesById(id));
     }
   },[]);
+
+  const [openSteps, setOpenSteps]=useState(false);
 
   // if(Array.isArray(details)){
   //     recipeDetail=details[0];
@@ -41,49 +43,60 @@ const RecipeDetail = () => {
                 </div>
 
                 <div className='detail'>
-                    <div >
+                    <div className={s.imageDetail} >
                         <img src={details.image} alt={details.name}/>
                     </div>
                     {/* **********************************  */}
                     <div className={s.healthScore}>
-                            <h4>Health Score:<span>{details.healthScore}</span></h4>
+                            <h4><span>{details.healthScore}</span><br/>Health Score</h4>
                     </div>
                     {/* **********************************  */}
-                    <div>
-                            <h4>Diet Types:</h4>
-                            <p>{details.diets?.join(', ').toUpperCase()}</p>
-                    </div>
+                    <Diet diets={details.diets} className={s.contentDiets}>
+                            {/* <p>{details.diets?.join(', ').toUpperCase()}</p> */}
+                    </Diet>
                     {/* **********************************  */}
-                    <div>
+                    <div className={s.contentSummary}>
                         <h3>About this recipe:</h3>
                         <p>{details.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g,'')}</p>
                     </div>
-                </div>
+                
+                {details.steps?
+                    (<div className={s.buttonContainer}>
+                    <button onClick={()=>setOpenSteps(!openSteps)}>Step by step</button>
+                </div>):<div/>
+                
+                } 
 
-                { details.steps ?
-                    <div>
-                        <h3>Step by step:</h3>
-                        <div className='stepList'>
+                <span>
+                {openSteps&&(
+                    <div className={s.contentStep}>
+                        <button onClick={()=>setOpenSteps(!openSteps)}>
+                        x
+                        </button>
+                        <h3>Step by step</h3>
+                        <ol className='stepList'>
                             {
-                              details?.steps?.map((e,i)=>{return (
-                                <div key={i}
-                                className='step'>
+                                details?.steps?.map((e,i)=>{return (
+                                    <div key={i}
+                                    className='step'>
                                     <p>{`${e.num}. ${e.step}`}</p>
                                 </div>
                               )})
                             }
-                        </div>
+                        </ol>
                     </div>
-                : <div>
+                )}
+                </span>
                 </div>
-                }
             </div>
+
            : <h1> 
             loading
            </h1>
             
             // <img className='imgLoading' src="https://i.pinimg.com/originals/c4/cb/9a/c4cb9abc7c69713e7e816e6a624ce7f8.gif" alt="" />
         }
+        <Link to='/home'><button>Back</button></Link>
     </div>
   );
 };
