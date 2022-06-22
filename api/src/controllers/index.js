@@ -9,7 +9,7 @@ const getApi = async () => {
   //llamado a la api por axios:
   try {
     const all = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=10`
     ); //NO OLVIDAR CAMBIAR A 100
     const apikRecipes = all.data.results.map((re) => ({
       id: re.id,
@@ -21,7 +21,7 @@ const getApi = async () => {
       healthScore: re.healthScore,
       dishes: re.dishTypes,
       steps: re.analyzedInstructions[0]?.steps.map((st) => ({
-        num: st.number,
+        number: st.number,
         step: st.step,
       })),
     }));
@@ -85,7 +85,7 @@ const getById = async (id)=> {
       healthScore: allId.data.healthScore,
       dishes: allId.data.dishTypes,
       steps: allId.data.analyzedInstructions[0]?.steps.map((st) => ({
-        num: st.number,
+        number: st.number,
         step: st.step,
       })),
     };
@@ -101,10 +101,25 @@ const getById = async (id)=> {
 const getAllRecipes = async () => {
   try{
     const apiInfo = await getApi();
-    //console.log(apiInfo);
     const dbInfo = await getDataBase();
+    let formaterDB;
+    if (dbInfo.length>0){
+      formaterDB= {
+                  id : dbInfo[0].id,
+                  name: dbInfo[0].name,
+                  image:  dbInfo[0].image,
+                  summary: dbInfo[0].summary,
+                  healthScore: dbInfo[0].healthScore,
+                  createdInDb : dbInfo[0].createdInDb,
+                  diets: dbInfo[0].types.map(r => r.nameType),
+                  steps: JSON.parse(dbInfo[0].steps)
+      }
+    }
+    else {
+      formaterDB=[];
+    }
     //concatenando:
-    const totalInfo = apiInfo.concat(dbInfo);
+    const totalInfo = apiInfo.concat(formaterDB);
     return totalInfo;
     //return apiInfo
   }

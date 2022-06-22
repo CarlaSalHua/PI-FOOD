@@ -4,7 +4,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 //import de CONTROLLERS:
-const {getById,getAllRecipes} = require('../controllers/index');
+const {getById,getAllRecipes, getDataBase} = require('../controllers/index');
 const {getTypeDiet} = require('../controllers/TypeDiet');
 const {Type, Recipe}= require ('../db')
 //***************************************************************************************************************************//
@@ -40,12 +40,34 @@ router.get('/recipes', async(req, res)=>{
 // NOTA: ADICIONAR LOS DE LA BASE DE DATOS
 router.get('/recipes/:idRecipe', async(req, res)=>{
  const {idRecipe}= req.params;
- const idTotalRecipes= await getById(idRecipe);
+ 
  try{
-     if(idRecipe){
-        idRecipe?
-        res.status(200).send(idTotalRecipes):
-        res.status(404).send('No ingreso un id valido.')
+ const idTotalRecipes= await getById(idRecipe);
+ //console.log('ooooooooooooooooo', idTotalRecipes)
+ let recipesDataBase= await getDataBase();
+ 
+ 
+ //console.log('heloooooooooooooooooo', recipesDataBase)
+
+ const matchRecipes = await recipesDataBase.filter((r)=>r.id===idRecipe);
+
+//console.log ('hola2', matchRecipes) 
+     
+if(idRecipe){
+        if(matchRecipes.length>0){
+            return res.status(200).send({
+                id : matchRecipes[0].id,
+                name: matchRecipes[0].name,
+                image:  matchRecipes[0].image,
+                summary: matchRecipes[0].summary,
+                healthScore: matchRecipes[0].healthScore,
+                createdInDb : matchRecipes[0].createdInDb,
+                diets: matchRecipes[0].types.map(r => r.nameType),
+                steps: JSON.parse(matchRecipes[0].steps)
+              })
+        }
+        //console.log(idTotalRecipes)
+        res.status(200).send(idTotalRecipes)
      }
      else {
          res.status(404).send('No ingresaste ningun id');
@@ -59,7 +81,7 @@ router.get('/recipes/:idRecipe', async(req, res)=>{
 //*3*[ ] POST /recipe:
 router.post('/createRecipe', async(req, res)=>{
     const {name, image, summary, healthScore, steps, diets}= req.body;
-
+//console.log ('consoles', req.body)
     const newRecipe= await Recipe.create({
         name,
         summary,
@@ -72,8 +94,11 @@ router.post('/createRecipe', async(req, res)=>{
         //Elaboracion del bucle FOR para incluir mas de un tipo de dieta a la receta creada.
         for (let i=0; i<diets.length;i++){
          let promiseDiet= await Type.findOne({
-             where: {nameType: diets[i].replaceAll(' ','-')}
+             where: {
+                nameType: diets[i]
+            }
          })
+         console.log(`Dieta ${i}`,promiseDiet)
          await newRecipe.addType(promiseDiet);
         }
         res.status(200).send('Receta creada satisfactoriamente!')
@@ -136,7 +161,7 @@ router.delete('/delete/:id', async(req, res)=>{
         });
         
         if(id){
-            deleteRecipe?
+            deleteRecipe ?
             res.status(200).send('La receta ha sido eliminada.'):
             res.status(404).send('El id no ha sido encontrado, o ya fue eliminado.')
         }
