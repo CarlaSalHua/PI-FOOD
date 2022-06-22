@@ -104,16 +104,19 @@ const getAllRecipes = async () => {
     const dbInfo = await getDataBase();
     let formaterDB;
     if (dbInfo.length>0){
-      formaterDB= {
-                  id : dbInfo[0].id,
-                  name: dbInfo[0].name,
-                  image:  dbInfo[0].image,
-                  summary: dbInfo[0].summary,
-                  healthScore: dbInfo[0].healthScore,
-                  createdInDb : dbInfo[0].createdInDb,
-                  diets: dbInfo[0].types.map(r => r.nameType),
-                  steps: JSON.parse(dbInfo[0].steps)
-      }
+      formaterDB=dbInfo.map(info=>{
+        return {
+          id : info.id,
+          name: info.name,
+          image:  info.image,
+          summary: info.summary,
+          healthScore: info.healthScore,
+          createdInDb : info.createdInDb,
+          diets: info.types.map(r => r.nameType),
+          steps: JSON.parse(info.steps)
+
+        }
+      }) 
     }
     else {
       formaterDB=[];

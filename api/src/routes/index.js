@@ -25,7 +25,7 @@ router.get('/recipes', async(req, res)=>{
             res.status(404).send('No ingresaste el nombre correcto de la receta.');
         }
         else{
-            res.status(200).send(totalRecipes)
+            res.status(200).send(totalRecipes);
         }
     }
     catch(error){
