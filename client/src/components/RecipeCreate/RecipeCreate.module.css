@@ -3,7 +3,7 @@
     background-image: url('../../imagenes/eatRight.png');
     background-repeat: no-repeat;
     background-position: right;
-    overflow: hidden;
+    /* overflow: hidden; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -22,7 +22,7 @@
 .content {
     position: absolute;
     background: rgba(236, 238, 215, 0.718);
-    border-radius: 7% 7% 0% 7%;
+    border-radius: 7% 0% 0% 7%;
     align-items: center;
     text-align: center;
     width: 63.5%;
@@ -31,9 +31,355 @@
 
 .title {
     color: rgb(65, 144, 19);
-    font-size:xx-large;
+    font-size:3em;
     font-weight: 800;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 30px 0px 20px 0px;
+    padding: 25px 0px 20px 0px;
+}
+
+/* ************************************* */
+/**************NAME STYLES**************/
+
+.contentName {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 4%;
+    margin-top: -1%;
+}
+
+.contentName label {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-left: 1%;
+    color:#237902;
+}
+
+.contentName input{
+    background:rgba(56, 169, 30, 0.763);
+    width: 52.5%;
+    border-radius: 50px;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 9px 0px 9px 18px;
+    font-size: 18px;
+    color: #ffffff
+}
+
+/* ************************************* */
+/**************IMAGE STYLES**************/
+
+.contentImage {
+    position: relative;
+    gap: 1rem;
+    width: 50%;
+    align-items: center;
+    align-content: center;
+    right: -59%;
+    top: 105px;
+}
+
+.contentImg {
+    width: 50%;
+}
+
+.contentImg img {
+    position:absolute;
+    max-width: 350px;
+    height: 250px;
+    object-fit: cover;
+    top: -260px;
+    left: 53px;
+}
+
+.contentInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.contentInput input {
+    font-size: 1rem;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.8rem 1.4rem;
+    width: 28rem;
+    color: green;
+    transition: all 0.5s;
+    font-family: inherit;
+}
+
+.contentInput input:focus {
+    outline: none;
+    border: 2px solid #62c907;
+}
+
+.contentInput label {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding-right: 20%;
+    color:#448907;
+}
+
+.contentImage button {
+    position: absolute;
+    cursor: pointer;
+    border: 0;
+    border-radius: 70px;
+    width: 180px;
+    height: 45px;
+    background:  #328f40;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    color:#f4f6d5;
+    right: 45%;
+}
+
+.contentUrl {
+    width: 400px;
+    max-width: 450px;
+    font-size: 2em;
+}
+
+.contentUrl input {
+    background:green;
+    border-radius: 50px;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 9px 0px 9px 18px;
+    font-size: 18px;
+    color: #ffffff
+}
+
+/* ***************************************** */
+/****************SUMMARY STYLES***************/
+
+.contentSummary {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 4%;
+    margin-top: 2.3%;
+}
+
+.contentSummary label {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-left: 1%;
+    color:#237902;
+}
+
+
+.contentSummary textarea {
+    font-size: 1.1rem;
+    border: 5px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    color: var(--text-color);
+    transition: all 0.5s;
+    font-family: inherit;
+    width: 590px;
+    height: 180px;
+    resize: none;
+}
+
+.contentSummary textarea:focus {
+    outline: none;
+    border: 3px solid #336815;
+}
+
+/* ***************************************** */
+/****************SCORE STYLES****************/
+
+.contentScore {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction:column;
+    align-items: center;
+    margin-left: -3.5%;
+    margin-top: 1.5%;
+}
+
+.contentScore label {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-left: 1%;
+    color:#237902;
+}
+
+.contentScore input {
+    background:rgb(3, 162, 3);
+    width: 7%;
+    border-radius: 50px;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 9px 0px 9px 20px;
+    font-size: 18px;
+    color: #ffffff
+}
+
+/* ***************************************** */
+/****************DIETS STYLES*****************/
+
+.contentDiets {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.formDiets {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-left: 4.5%;
+    margin-top:0.8%
+    
+}
+
+.dietsTitle {
+    font-size: 1.3em;
+    font-weight: 600;
+    color:#237902;
+}
+
+.formContainerDiets{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 1.2rem;
+}
+
+.containerDiets{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.31rem;
+  padding: 3px 28.5px 2px 28.5px;
 
 }
+
+.formDietButton {
+    width: 6.2rem;
+    height: 6.2rem;
+    object-fit: cover;
+    transition: all 0.4s;
+    border-radius: 5rem;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    /* text-transform: scale(1.2); */
+}
+
+.formDietButton:hover {
+    transform: scale(1.1);
+}
+
+.dietSelected {
+    background-color: #c7e795;
+}
+/* .containerDiets input {
+    width: 90px;
+    height: 80px;
+    max-width: 100px;
+    margin: 5% -22% 5% 0%; 
+} */
+
+/* ***************************************** */
+/****************STEPS STYLES*****************/
+
+.contentSteps{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 4%;
+    margin-top: -14.1%;
+}
+
+.contentSteps label {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-left: 1%;
+    color:#237902;
+}
+
+.addSteps input {
+    background:green;
+    border-radius: 50px;
+    width: 300px;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 9px 0px 9px 18px;
+    font-size: 18px;
+    color: #ffffff
+}
+
+.addSteps button {
+    position: absolute;
+    border: 0;
+    border-radius: 70px;
+    width: 100px;
+    height: 40px;
+    background:  #328f40;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-weight: bold;
+    color:#f4f6d5;
+}
+
+.buttonCreate {
+    position: absolute;
+    border: 0;
+    border-radius: 70px;
+    width: 200px;
+    height: 50px;
+    background:  #328f40;
+    cursor: pointer;
+    bottom: 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color:#f4f6d5;
+    right: 41%;
+    bottom: 1%;
+}
+
+.backButton {
+    position: absolute;
+    border: 0;
+    border-radius: 70px;
+    width: 60px;
+    height: 40px;
+    background:  #328f40;
+    cursor: pointer;
+    bottom: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color:#f4f6d5;
+    right: 0.7%;
+    top: 1%;
+    
+}
+
+.containerSucces {
+    position: absolute;
+    background: rgba(174, 234, 130, 0.859);
+    border-radius: 7% 0% 0% 7%;
+    align-items: center;
+    text-align: center;
+    width: 63.5%;
+    height: 92%;
+}
+

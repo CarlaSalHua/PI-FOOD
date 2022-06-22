@@ -83,19 +83,21 @@ const dietsByNameType = (dieta)=> {
 const createRecipe = (payload)=> {
 //*payload as recipe*
     return async function (dispatch){
+      console.log('hellooooooo')
         let json = await axios.post(`http://localhost:3001/createRecipe`, payload)
+        console.log('hellooooooo',json)
         return json;
     };
 };
 
-// //*DELETE /delete/:id
-// const deleteRecipe = (id)=> { 
-//    axios.delete(`http://localhost:3001/delete/${id}`)
-//    return {
-//         type: 'DELETE_RECIPE',
-//         payload: id,
-//    }
-// };
+//*DELETE /delete/:id
+const deleteRecipe = (id)=> { 
+   axios.delete(`http://localhost:3001/delete/${id}`)
+   return {
+        type: 'DELETE_RECIPE',
+        payload: id,
+   }
+};
 // //esconder el delete para la presentacion xd
 //
 
@@ -142,9 +144,9 @@ export {
    filter_health_score,
    filter_created,
    getTypesDiets,
+   deleteRecipe
 }
     // recipesById,
     // cleanData,
-    // deleteRecipe
 
     

@@ -34,7 +34,7 @@ const Home = () => {
     const [page, setPage]= useState(1);
     const [forPage]= useState(9);
     const total= Math.ceil(allRecipes.length/forPage);
-    console.log('Home', total , 'page',page, 'forPage', forPage )
+    //console.log('Home', total , 'page',page, 'forPage', forPage )
 
   return (
     <div className="contentHome">

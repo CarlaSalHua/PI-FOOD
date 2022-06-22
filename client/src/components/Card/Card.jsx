@@ -4,6 +4,7 @@ import s from '../Card/Card.module.css'
 import CardStyle from './CardStyle.js'
 
 const Card =({id, name, image, summary, diets, healthScore})=> {
+    console.log(name, diets);
     return(
         <CardStyle className={s.card} background={image} >
             <div className={s.cardConteiner} >

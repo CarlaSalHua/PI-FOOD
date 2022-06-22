@@ -21,15 +21,6 @@ const RecipeDetail = () => {
 
   const [openSteps, setOpenSteps]=useState(false);
 
-  // if(Array.isArray(details)){
-  //     recipeDetail=details[0];
-  // }
-  // else{
-  //     recipeDetail=details;
-  // }
-
-  // const diets = details.dietTypes ? details.dietTypes.map(e => e.name) : details.diets;
-
   return (
     
     <div className={s.contentDetail}>
@@ -75,11 +66,10 @@ const RecipeDetail = () => {
                         </button>
                         <h3>Step by step</h3>
                         <ol className='stepList'>
-                            {
-                                details?.steps?.map((e,i)=>{return (
-                                    <div key={i}
+                            { details?.steps?.map((e,i)=>   {return (
+                                <div key={i}
                                     className='step'>
-                                    <p>{`${e.num}. ${e.step}`}</p>
+                                    <p>{`${e.number}. ${e.step}`}</p>
                                 </div>
                               )})
                             }

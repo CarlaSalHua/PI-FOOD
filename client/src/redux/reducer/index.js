@@ -6,20 +6,20 @@ const initialState= {
     error: {},
     recipeDetail:{},
     diets: [],
-    //post: {},
-    // currentPage: 0,
+    creadosDB: [],
 }
+
 
 const rootReducer =(state= initialState, action)=>{
     switch(action.type){
         
         case 'GET_ALL_RECIPES':
+            // console.log (action.payload);
             return{
                 ...state,
                 recipes: action.payload,
                 xrecipe: action.payload,
                 allRecipes: action.payload,
-                //diets: action.payload,
                 error:{},
             }
         default:
@@ -36,7 +36,7 @@ const rootReducer =(state= initialState, action)=>{
                     }
                 })
             });
-            console.log('hola diets',typeDiets)
+            // console.log('hola diets',action.payload)
             return{
                 ...state,
                 recipes:action.payload==='all'?state.allRecipes:typeDiets,

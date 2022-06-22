@@ -6,7 +6,6 @@ import s from './Filters.module.css'
 const FilterByCreated = ()=> {
     const dispatch = useDispatch();
 
-
     const handleFilterByCreated= (e)=>{
         e.preventDefault();
         dispatch(filter_created(e.target.value))
