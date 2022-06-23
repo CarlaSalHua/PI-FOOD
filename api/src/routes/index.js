@@ -172,4 +172,42 @@ router.delete('/delete/:id', async(req, res)=>{
     
 }); 
 
+//* UPDATE /update/:id
+router.put ('/update/:id', async(req, res)=>{
+    const {id}=req.params;
+    const {name, image, summary, healthScore, diets, steps }=req.body;
+
+    steps=steps.sort((a,b)=>{
+        return a.number - b.number;
+    })
+    
+    for(let i=0; i<steps.length; i++){
+        await step.update
+    }
+
+    try{
+        const updateRecipe= await Recipe.update({
+            name:name,
+            image: image,
+            summary: summary,
+            healthScore: healthScore,
+            diets: diets,
+            steps: steps,
+            
+            where: {
+                id: id
+            }
+        })
+    
+        if(id){
+            updateRecipe?
+            res.status(200).send('La receta ha sido actualizada.'):
+            res.status(404).send('No se ha podido actualizar por falta de campos.')
+        }
+    }
+    catch(error) {
+            res.status(404).send('Receta no encontrada.')
+    }
+});
+
 module.exports = router;
