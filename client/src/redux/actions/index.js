@@ -22,43 +22,6 @@ const getAllRecipes= ()=>{
       }
    };
 };
-//
-//******************************************************************* */
-//
-// const getAllRecipes= ()=>{
-//   return function (dispatch) {
-  
-//    const response= axios.get(`http://localhost:3001/recipes`)
-//       .then( (res)=> dispatch ({
-//            type:'GET_ALL_RECIPES',
-//            payload: res.data
-   
-//       }))
-//       .catch((error) => (
-   //         { console.log(error)});
-//       
-//     return response; 
-//     }
-    
-//  };
-
-//************************************************************** */
-// const getAllRecipes= ()=>{
-//   return function (dispatch) {
-  
-//    return fetch(`http://localhost:3001/recipes`)
-//       .then( response=> response.json())
-//        .then( json => {
-//            dispatch ({
-//                type:'GET_ALL_RECIPES',
-//                 payload: res.data
-//             });
-//       .catch((error) => (
-//          { console.log(error)});
-//    });
-//       
-//  };
-
 
 //*1.1*[ ] GET /recipes?name="...":
 //* getting all recipes(API+DB) by NAME *

@@ -40,7 +40,7 @@ const Home = () => {
       
       <div>
           <div className={s.NavBar}>
-          <NavBar />
+          <NavBar setPage={setPage} />
           </div>
             {/* <SearchBar /> */}
           {/*********************************************/}

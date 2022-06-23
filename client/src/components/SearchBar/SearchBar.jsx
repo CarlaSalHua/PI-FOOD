@@ -5,16 +5,14 @@ import searchButton from '../../imagenes/search_icon.png';
 import validationSearch from "./Validation";
 import s from './SearchBar.module.css'
 
-const Search =()=>{
+const Search =({setPage})=>{
     const dispatch =useDispatch();
     const [name, setName]= useState('');
-
     const [errorName, setErrorName] = useState('');
-
  //******************* */
     const handleChange=(e)=>{
         e.preventDefault();
-        setName(e.target.value)
+        setName(e.target.value);
     };
 //************* */
     const handleSubmit= (e)=>{
@@ -23,6 +21,7 @@ const Search =()=>{
         let validation = validationSearch(e.target.value);
         setErrorName(validation);
         setName('');
+        setPage(1);
     };
 
     return (

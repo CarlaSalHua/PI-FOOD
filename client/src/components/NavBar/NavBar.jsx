@@ -4,7 +4,9 @@ import SearchBar from '../SearchBar/SearchBar'
 import s from './NavBar.module.css';
 import logo from '../../imagenes/Logos/logoNature.png';
 
-const NavBar= ()=> {
+const NavBar= ({setPage})=> {
+    // const [page, setPage]= useState(1);
+
     return(
         <nav className={s.contentNavbar}>
                 
@@ -19,7 +21,7 @@ const NavBar= ()=> {
                 <div className={s.menu}>
                     <div className={s.list}>
                         <div className={s.searchBar}>
-                        <SearchBar className={s.searchBar}/>
+                        <SearchBar className={s.searchBar} setPage={setPage} />
                         </div>
                         <Link to={'/createRecipe'} className={s.recipe} >
                             <span>Create my recipe</span>
