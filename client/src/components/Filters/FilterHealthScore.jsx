@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { filter_health_score } from '../../redux/actions';
 import s from './Filters.module.css'
 
-const FilterHealthScore=()=>{
+const FilterHealthScore=({setPage})=>{
     const dispatch= useDispatch();
 
     const handleHealthScore= (e)=> {
         e.preventDefault();
-        dispatch(filter_health_score(e.target.value))
+        dispatch(filter_health_score(e.target.value));
+        setPage(1);
     };
 
     return (

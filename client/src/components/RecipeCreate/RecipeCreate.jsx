@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createRecipe } from "../../redux/actions";
 import { validationImage, validationText } from "./Validations";
 import healthyGirl from "../../imagenes/healthyGirl.png";
@@ -55,7 +55,8 @@ const RecipeCreate = () => {
   const [errorText, setErrorText] = useState({});
   const [errorImage, setErrorImage] = useState(null);
 
-  // const [dietSelected, setDietSelected] = useState([]);
+  const [dietSelected, setDietSelected] = useState([]);
+  
   const [imageRecipe, setImageRecipe] = useState("");
   const [inputSteps, setInputSteps] = useState({
     number: 0,
@@ -74,16 +75,17 @@ const RecipeCreate = () => {
 
   //INPUT VALIDATIONS
   const handleInputs = (input) => {
-    // console.log("my data", input);
+    //console.log("my data", input);
     const advice = validationText(input);
     setErrorText(advice);
     if (Object.entries(advice).length === 0) {
       const stepsToString = JSON.stringify(input.steps[0].steps);
-    //   console.log("formateados", stepsToString);
-      const myData = {
+         console.log("formateados", stepsToString);
+      
+         const myData = {
         ...input,
         steps: stepsToString,
-        healthScore: Number(input.healthScore)
+        healthScore: Number(input.healthScore),
       };
       setSuccesPost(true);
       dispatch(createRecipe(myData)); //function imported
@@ -103,11 +105,14 @@ const RecipeCreate = () => {
     e.preventDefault();
     if (input.diets.includes(e.target.value)) {
       input.diets = input.diets.filter((i) => i !== e.target.value);
-      // setDietSelected((dietSelected)=>
-      //     dietSelected.filter((d)=>d!==e.target.value)
-      // );
-    } else {
+      setDietSelected((dietSelected) =>
+        dietSelected.filter((d) => d !== e.target.value)
+      );
+    } 
+    
+    else {
       input.diets.push(e.target.value);
+      setDietSelected((dietSelected) => [...dietSelected, e.target.value]);
     }
     //console.log(input.diets);
   };
@@ -119,7 +124,7 @@ const RecipeCreate = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
+  
   const handleAddStep = () => {
     setInput((input) => ({
       ...input,
@@ -130,21 +135,28 @@ const RecipeCreate = () => {
         },
       ],
     }));
-
+    
     setInputSteps({
       number: ++inputSteps.number,
       step: "",
     });
-
+    
     inputStepRef.current.value = "";
   };
-
+  
   // useEffect(()=>{
-  //     setInput((input)=>({
+  //     setInput({
   //         ...input,
-  //         diets: dietSelected,
-  //     }));
+  //         diets: input.diets,
+  //     });
   // },[dietSelected]);
+
+  useEffect(() => {
+    setInput((formData) => ({
+      ...formData,
+      diets: dietSelected,
+    }));
+  }, [dietSelected]);
 
   return (
     <div className={s.generalContent}>
@@ -153,7 +165,7 @@ const RecipeCreate = () => {
       <div className={s.content}>
         <h3 className={s.title}>Create your healthy recipe!</h3>
 
-        <form onSubmit={(e) => e.preventDefault()} action=''>
+        <form onSubmit={(e) => e.preventDefault()} action="">
           {/* *********************************** */}
           <div className={s.contentName}>
             <label htmlFor="name">Name Recipe: </label>
@@ -182,7 +194,6 @@ const RecipeCreate = () => {
             <span>{errorText.healthScore}</span>
           </div>
 
-            
           {/* ****************************************** */}
           <div className={s.contentImage}>
             <div className={s.contentImg}>
@@ -206,24 +217,24 @@ const RecipeCreate = () => {
             </button>
           </div>
           {/* ********************************************** */}
-          
+
           <div className={s.contentSteps}>
-              <label htmlFor="">Steps:</label>
-              <div className={s.addSteps}>
-                <span>{inputSteps.number + 1}</span>
-                <input
-                  onChange={handleChangeStep}
-                  type="text"
-                  name="step"
-                  id="step"
-                  autoComplete="off"
-                  ref={inputStepRef}
-                />
-                <button type="submit" onClick={handleAddStep}>
-                  More Steps
-                </button>
-              </div>
+            <label htmlFor="">Steps:</label>
+            <div className={s.addSteps}>
+              <span>{inputSteps.number + 1}</span>
+              <input
+                onChange={handleChangeStep}
+                type="text"
+                name="step"
+                id="step"
+                autoComplete="off"
+                ref={inputStepRef}
+              />
+              <button type="submit" onClick={handleAddStep}>
+                More Steps
+              </button>
             </div>
+          </div>
           {/* ********************************************** */}
           <div className={s.contentSummary}>
             <label htmlFor="summary">Summary:</label>
@@ -231,18 +242,20 @@ const RecipeCreate = () => {
             <span>{errorText.summary}</span>
           </div>
           {/* ********************************************** */}
-          
+
           <div>
             <div className={s.contentDiets}>
               <div className={s.formDiets}>
-                <label className={s.dietsTitle} htmlFor="">Diets:</label>
+                <label className={s.dietsTitle} htmlFor="">
+                  Diets:
+                </label>
                 <div className={s.formContainerDiets}>
                   {typeDiets?.map((index) => {
                     // console.log(iconDietTypes[d.nameType])
                     return (
                       <div key={index} className={s.containerDiets}>
                         <input
-                          onClick={handleDiets}
+                          onClick={(e)=>handleDiets(e)}
                           className={`${s.formDietButton} ${
                             input.diets.includes(index) ? s.dietSelected : null
                           } `}
@@ -260,11 +273,10 @@ const RecipeCreate = () => {
               </div>
             </div>
             {/* ************************************ */}
-            
           </div>
         </form>
         {/* ************************************ */}
-        <button onClick={() => handleInputs(input)} className={s.buttonCreate}>
+        <button onClick={()=> handleInputs(input)} className={s.buttonCreate}>
           Create
         </button>
         <Link to="/home">

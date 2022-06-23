@@ -1,10 +1,8 @@
 import React, { useState} from 'react';
 //import { getAllRecipes } from '../../redux/actions';
-
+import s from './Paginacion.module.css'
 
 const Pagination= ({page, setPage ,total})=> {
-    //const [posts, setPosts]= useState([]);
-    // const [postsPerPage, setPostPerPage]= useState(9);
     const [currentPage, setCurrentPage]= useState(1);
 
     const nextPage= ()=> {
@@ -17,7 +15,7 @@ const Pagination= ({page, setPage ,total})=> {
         setPage(parseInt(page)-1);
     };
     
-    const handlePages=(e)=> {
+    const handleInputs=(e)=> {
         setCurrentPage(parseInt(e.target.value));
         setPage(parseInt(e.target.value));
     };
@@ -27,34 +25,26 @@ const Pagination= ({page, setPage ,total})=> {
         pageNumbers.push(i);
     };
 
-    // //GETTING CURRENT POST:
-    // const indexOfLastPost= currentPage*postsPerPage;
-    // const indexOfFirstPost= indexOfLastPost-postsPerPage;
-    // const currentPosts= posts.slice(indexOfFirstPost, indexOfLastPost);
-
-    // //CHANGING PAGE:
-    // const paginate= (pageNumber)=> setCurrentPage(pageNumber);
-
-
     return (
-        <div>
-            <button disabled={page ===1||page <1} onClick={previousPage}> 
+        <div className={s.contentPagination}>
+            <button disabled={page ===1||page <1} onClick={previousPage} className={s.paginationButton}> 
             <span className="title">↩</span>
             </button>
+            
             {   pageNumbers&&
                 pageNumbers.map((v)=>(
-                    <button value={v} onClick={(e)=>handlePages(e)} key={v}>
+                    <button value={v} onClick={(e)=>handleInputs(e)} key={v} className={`${s.paginationButton} ${currentPage=== parseInt(v)? s.inputActive : null}`}>
                         {v}
                     </button>
                 ))
             }
-
-            <button disabled={page ===total || page >total} onClick={nextPage}>
-            <span className="title">↪</span>
+            
+            <button disabled={page ===total || page >total} onClick={nextPage} className={s.paginationButton}>
+                <span className="title">↪</span>
             </button>
-
         </div>
     );
 };
+
 
 export default Pagination;

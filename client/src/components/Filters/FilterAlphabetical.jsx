@@ -3,13 +3,14 @@ import {useDispatch} from 'react-redux';
 import { filterA_Z } from '../../redux/actions';
 import s from './Filters.module.css'
 
-const FilterAlphabetical= () => {
+const FilterAlphabetical= ({setPage}) => {
+    
     const dispatch= useDispatch();
     
     const handleAlphabetical= (e)=> {
         e.preventDefault();
         dispatch(filterA_Z(e.target.value))
-        
+        setPage(1);
     };
 
     return (

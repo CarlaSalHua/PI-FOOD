@@ -22,6 +22,43 @@ const getAllRecipes= ()=>{
       }
    };
 };
+//
+//******************************************************************* */
+//
+// const getAllRecipes= ()=>{
+//   return function (dispatch) {
+  
+//    const response= axios.get(`http://localhost:3001/recipes`)
+//       .then( (res)=> dispatch ({
+//            type:'GET_ALL_RECIPES',
+//            payload: res.data
+   
+//       }))
+//       .catch((error) => (
+   //         { console.log(error)});
+//       
+//     return response; 
+//     }
+    
+//  };
+
+//************************************************************** */
+// const getAllRecipes= ()=>{
+//   return function (dispatch) {
+  
+//    return fetch(`http://localhost:3001/recipes`)
+//       .then( response=> response.json())
+//        .then( json => {
+//            dispatch ({
+//                type:'GET_ALL_RECIPES',
+//                 payload: res.data
+//             });
+//       .catch((error) => (
+//          { console.log(error)});
+//    });
+//       
+//  };
+
 
 //*1.1*[ ] GET /recipes?name="...":
 //* getting all recipes(API+DB) by NAME *
@@ -84,22 +121,22 @@ const createRecipe = (payload)=> {
 //*payload as recipe*
     return async function (dispatch){
       console.log('hellooooooo')
-        let json = await axios.post(`http://localhost:3001/createRecipe`, payload)
-        console.log('hellooooooo',json)
-        return json;
+      let json = await axios.post(`http://localhost:3001/createRecipe`, payload)
+      console.log('hellooooooo',json)
+      return json;
     };
-};
-
-//*DELETE /delete/:id
-const deleteRecipe = (id)=> { 
-   axios.delete(`http://localhost:3001/delete/${id}`)
-   return {
-        type: 'DELETE_RECIPE',
-        payload: id,
-   }
-};
-// //esconder el delete para la presentacion xd
-//
+  };
+  
+  //*DELETE /delete/:id
+  const deleteRecipe = (id)=> { 
+    axios.delete(`http://localhost:3001/delete/${id}`)
+    return {
+      type: 'DELETE_RECIPE',
+      payload: id,
+    }
+  };
+  // //esconder el delete para la presentacion xd
+  
 
 //*ASCENDANT FILTER (A-Z) \ DEFAULT:(Z-A)*
 const filterA_Z= (payload)=> {
@@ -133,6 +170,8 @@ const filter_created= (payload)=>{
     };
 };
 
+
+
 export {
    getAllRecipes,
    recipesByName,
@@ -144,7 +183,7 @@ export {
    filter_health_score,
    filter_created,
    getTypesDiets,
-   deleteRecipe
+   deleteRecipe,
 }
     // recipesById,
     // cleanData,

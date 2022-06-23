@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 import NavBar from "../NavBar/NavBar";
 import Pagination from '../Paginacion/Paginacion'
 import Loading from "../Loading/Loading";
-import NotFound from "../NotFound/NotFound";
+//import NotFound from "../NotFound/NotFound";
 
 import FilterAlphabetical from "../Filters/FilterAlphabetical";
 import FilterDietTypes from "../Filters/FilterDietTypes";
@@ -21,6 +21,11 @@ const Home = () => {
   //let [loading, setLoading]= useState(true);
   //console.log(allRecipes)
 
+  //PAGINATION
+  const [page, setPage]= useState(1);
+  const [forPage]= useState(9);
+  const total= Math.ceil(allRecipes.length/forPage);
+
   useEffect(() => {
       dispatch(getAllRecipes());
     }, [dispatch]);
@@ -30,12 +35,6 @@ const Home = () => {
         dispatch(getAllRecipes());
     }
     
-    //PAGINATION
-    const [page, setPage]= useState(1);
-    const [forPage]= useState(9);
-    const total= Math.ceil(allRecipes.length/forPage);
-    //console.log('Home', total , 'page',page, 'forPage', forPage )
-
   return (
     <div className="contentHome">
       
@@ -48,22 +47,22 @@ const Home = () => {
           <div className={s.filtersBar}>
               <div>
                 <h3>Recipes</h3>
-                <FilterByCreated />
+                <FilterByCreated setPage={setPage} />
               </div>
               {/****/}
               <div>
                 <h3>Alphabetical order</h3>
-                <FilterAlphabetical />
+                <FilterAlphabetical setPage={setPage} />
               </div>
               {/****/}
               <div >
                 <h3>Health Score</h3>
-                <FilterHealthScore />
+                <FilterHealthScore setPage={setPage} />
               </div>
               {/****/}
               <div>
                 <h3>Diet types</h3>
-                <FilterDietTypes />
+                <FilterDietTypes setPage={setPage} />
               </div>
           </div>
           {/**********************************************/}
@@ -77,7 +76,7 @@ const Home = () => {
               <div className={s.cardGrid}>
                 { allRecipes.length>0?
 
-                  ( allRecipes?.slice((page-1)* forPage, (page-1)*forPage+forPage).map((e) => {
+                  ( allRecipes.slice((page-1)* forPage, (page-1)*forPage+forPage)?.map((e) => {
                       return (
                           <div className={s.card}>
                           <Card
@@ -92,16 +91,15 @@ const Home = () => {
                           </div>
                       )
                   })
-                  ): !allRecipes.length>0?(
+                  ):(
                     <Loading/>
-                  ): (
-                    <NotFound/>
                   )
+
                 }
               </div>
                 <Pagination page={page} setPage={setPage} total={total}/>
           </div>
-          {/**********************************************/}
+          {/************************************************************/}
       </div>
 
 

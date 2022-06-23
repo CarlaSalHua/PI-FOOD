@@ -1,0 +1,25 @@
+.contentPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.paginationButton {
+    border: 5px solid var(--border-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-bottom: 1.7%;
+}
+
+.inputActive {
+    background-color: #9bdf7b;
+    color: var(--text-white-color);
+  }
+
+

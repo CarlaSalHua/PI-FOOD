@@ -2,14 +2,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { getTypesDiets } from "../../redux/actions";
 import s from './Filters.module.css'
-const FilterDietTypes=() => {
+
+
+const FilterDietTypes=({setPage}) => {
 
     const dispatch= useDispatch();
 
     const handleDietType=(e)=>{
         e.preventDefault();
         //console.log('console 2',e.target.value)
-        dispatch(getTypesDiets(e.target.value))
+        dispatch(getTypesDiets(e.target.value));
+        setPage(1);
     };
 
     return(

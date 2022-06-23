@@ -151,16 +151,8 @@ const rootReducer =(state= initialState, action)=>{
             recipes: createdFilter,
             error:{},
         }
-        // return {
-        //     ...state,
-        //     recipes: action.payload==='all'?
-        //     state.allRecipes: createdFilter
-        // }
         
         /***********************************/
-
-
-
     }    
 };
 

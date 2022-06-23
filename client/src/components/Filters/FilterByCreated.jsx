@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { filter_created } from "../../redux/actions";
 import s from './Filters.module.css'
 
-const FilterByCreated = ()=> {
+const FilterByCreated = ({setPage})=> {
     const dispatch = useDispatch();
 
     const handleFilterByCreated= (e)=>{
         e.preventDefault();
-        dispatch(filter_created(e.target.value))
+        dispatch(filter_created(e.target.value));
+        setPage(1);
     };
 
     return (
