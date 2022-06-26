@@ -33,7 +33,9 @@ const Pagination= ({page, setPage ,total})=> {
             
             {   pageNumbers&&
                 pageNumbers.map((v)=>(
-                    <button value={v} onClick={(e)=>handleInputs(e)} key={v} className={`${s.paginationButton}`}>
+                    <button value={v} onClick={(e)=>handleInputs(e)} key={v} className={`${s.paginationButton} ${
+                        currentPage === parseInt(v) ? s.inputActive : null
+                      }`}>
                         {v}
                     </button>
                 ))
