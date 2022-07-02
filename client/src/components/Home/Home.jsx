@@ -92,7 +92,7 @@ const Home = () => {
                       )
                   })
                   ):(
-                    <Loading/>
+                    < Loading/>
                   )
 
                 }

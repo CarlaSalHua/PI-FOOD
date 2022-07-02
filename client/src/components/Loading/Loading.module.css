@@ -4,3 +4,8 @@
     align-content: center;
     align-items: center;
 }
+
+.containerLoading img {
+    position: absolute;
+    right: -100%;
+}
